@@ -21,10 +21,36 @@ class WW_Management
 
     public static function ww_deactivation()
     {
+        
+    }
+
+    public static function ww_update_student()
+    {
+
+    }
+
+    public static function ww_update_center()
+    {
+
+    }
+
+    public static function ww_test()
+    {
+        //echo "Hello";
     }
 
     public static function ww_uninstall()
     {
+    }
+
+    public static function ww_load_menu()
+    {
+        add_menu_page('WeeManage', 'WeeMange', 'Wee_Wisdom_Mangement', 'WW_admin', 'ww_test', 'dashicons-carrot', 6);
+        /*
+        add_submenu_page('activity_admin', '活动列表', '活动列表', 'edit_posts', 'activity_admin', array('Activity_Admin', 'activity_admin_page'));
+        add_submenu_page('activity_admin', '活动设置', '活动设置', 'edit_posts', 'activity_admin_setting', array('Activity_Admin', 'activity_admin_setting'));
+        */
+
     }
 
     /**
