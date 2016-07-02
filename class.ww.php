@@ -57,6 +57,7 @@ class WW_Management
         $ww_table_name_center = $wpdb->prefix.'ww_center';
         $ww_table_name_student = $wpdb->prefix.'ww_student';
         $ww_charset_collate = $wpdb->get_charset_collate();
+        //CONSTRAINT fk_center_id FOREIGN KEY (center_id) REFERENCES ".$ww_student."(center_id)
 
         $ww_center_sql = "CREATE TABLE $ww_table_name_center (
 			center_id int(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -68,7 +69,6 @@ class WW_Management
             current int(10),
             is_full boolean DEFAULT false NOT NULL,
 			CONSTRAINT pk_center_id PRIMARY KEY (center_id),
-			CONSTRAINT fk_center_id FOREIGN KEY (center_id) REFERENCES ".$ww_student."(center_id)
 		) $ww_charset_collate;";
 
          $ww_student_sql = "CREATE TABLE $ww_table_name_student (
