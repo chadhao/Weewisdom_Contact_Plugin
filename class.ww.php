@@ -68,7 +68,7 @@ class WW_Management
             scale int(10),
             current int(10),
             is_full boolean DEFAULT false NOT NULL,
-			CONSTRAINT pk_center_id PRIMARY KEY (center_id),
+			CONSTRAINT pk_center_id PRIMARY KEY (center_id)
 		) $ww_charset_collate;";
 
          $ww_student_sql = "CREATE TABLE $ww_table_name_student (
