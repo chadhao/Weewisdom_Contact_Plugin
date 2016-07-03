@@ -17,7 +17,7 @@ class WW_Management
     public static function ww_activation()
     {
         self::ww_init_database();
-        add_action('ww_load_menu');
+        self::ww_load_menu();
     }
 
     public static function ww_deactivation()
@@ -46,7 +46,7 @@ class WW_Management
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManage', 'WeeManager', 'WeeManager', 'manage_options', 'ww_test', '', 3);
+        add_menu_page('WeeManage', 'WeeManager', 'WeeManager', 'manage_options');
         /*
         add_submenu_page('activity_admin', '活动列表', '活动列表', 'edit_posts', 'activity_admin', array('Activity_Admin', 'activity_admin_page'));
         add_submenu_page('activity_admin', '活动设置', '活动设置', 'edit_posts', 'activity_admin_setting', array('Activity_Admin', 'activity_admin_setting'));
