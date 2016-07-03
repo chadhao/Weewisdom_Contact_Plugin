@@ -37,7 +37,7 @@ class WW_Management
 
     public static function ww_test()
     {
-        echo "Hello";
+        //echo "Hello";
     }
 
     public static function ww_uninstall()
