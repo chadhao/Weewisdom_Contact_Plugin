@@ -26,7 +26,7 @@ register_deactivation_hook(__FILE__, array('WW_Management', 'ww_deactivation'));
 if(is_admin)
 {
 	require_once WW_Management_DIR.'class.ww.php';
-	add_action('init', array('WW_Management', 'ww_load_menu'));
+	add_action('init', array('WW_Management', 'ww_init'));
 }
 //add_action(array('WW_Management', 'ww_load_menu'));
 
