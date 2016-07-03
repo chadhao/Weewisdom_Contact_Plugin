@@ -23,6 +23,7 @@ register_deactivation_hook(__FILE__, array('WW_Management', 'ww_deactivation'));
 
 //require_once WW_Management_DIR.'class.ww.php';
 //require_once ACTIVITY__PLUGIN_DIR.'class.activity-signup.php';
+/*
 if(is_admin)
 {
 	require_once WW_Management_DIR.'class.ww.php';
@@ -30,12 +31,7 @@ if(is_admin)
 }
 //add_action(array('WW_Management', 'ww_load_menu'));
 
-/*
-if (is_admin()) {
-    require_once ACTIVITY__PLUGIN_DIR.'class.activity-admin.php';
-    add_action('init', array('Activity_Admin', 'activity_admin_init'));
-}
-*/
+
 
 // Code blow enables debug message output during plugin activation.
 // add_action('activated_plugin', 'my_save_error');

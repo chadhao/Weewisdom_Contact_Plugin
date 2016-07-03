@@ -5,7 +5,7 @@ class WW_Management
 
     public static function ww_init()
     {
-        add_action('admin_menu', 'ww_load_menu');
+        //add_action('admin_menu', 'ww_load_menu');
         /*
         add_action('admin_post_activity_signup', array('Activity_Signup', 'activity_signup_frontend_add'));
         add_action('admin_post_nopriv_activity_signup', array('Activity_Signup', 'activity_signup_frontend_add'));
@@ -18,7 +18,11 @@ class WW_Management
     public static function ww_activation()
     {
         self::ww_init_database();
-        //add_action('admin_menu', 'ww_load_menu');
+        if(is_admin)
+        {
+            add_action('admin_menu', 'ww_load_menu');
+
+        }
     }
 
     public static function ww_deactivation()
@@ -36,10 +40,6 @@ class WW_Management
 
     }
 
-    public static function ww_test()
-    {
-        //echo "Hello";
-    }
 
     public static function ww_uninstall()
     {
@@ -47,7 +47,7 @@ class WW_Management
 
     public static function ww_load_menu()   
     {
-        add_menu_page('WeeManager', 'WeeManager', 'manage_options', 'Wee_Menu');
+        add_menu_page('WeeManager', 'WeeManager', 'manage_options', 'Wee_Menu', '', '', 2);
         //add_menu_page('WeeManage', 'WeeManager', 'WeeManager', 'list_users');
         //add_submenu_page('WeeStudent', 'WeeStudent', 'WeeStudent', 'edit_posts');
     }
