@@ -5,7 +5,7 @@ class WW_Management
 
     public static function ww_init()
     {
-        
+
     }
 
     public static function ww_activation()
@@ -20,12 +20,12 @@ class WW_Management
 
     public static function ww_update_student()
     {
-
+        echo "This is student updating function";
     }
 
     public static function ww_update_center()
     {
-
+        echo "This is center updateing function";
     }
 
 
@@ -36,8 +36,8 @@ class WW_Management
     public static function ww_load_menu()   
     {
         add_menu_page('WeeManager', 'WeeManager', 'manage_options', 'Wee_Menu', '', '', 2);
-        //add_menu_page('WeeManage', 'WeeManager', 'WeeManager', 'list_users');
-        //add_submenu_page('WeeStudent', 'WeeStudent', 'WeeStudent', 'edit_posts');
+        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'manage_options', 'ww_update_center', '', 1);
+        add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 'manage_options', 'ww_update_student', '', 2);
     }
 
     /**
