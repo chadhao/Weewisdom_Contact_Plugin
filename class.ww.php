@@ -20,7 +20,7 @@ class WW_Management
         self::ww_init_database();
         if(is_admin)
         {
-            add_action('admin_menu', 'ww_load_menu');
+            add_action('admin_menu', array('WW_Management','ww_load_menu');
 
         }
     }
