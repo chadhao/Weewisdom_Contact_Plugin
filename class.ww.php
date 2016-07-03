@@ -36,8 +36,8 @@ class WW_Management
     public static function ww_load_menu()   
     {
         add_menu_page('WeeManager', 'WeeManager', 'manage_options', 'Wee_Menu', '', '', 2);
-        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'manage_options', 'SubWeeCenter', 'ww_update_center');
-        add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 'manage_options', 'SubWeeStudent', 'ww_update_center');
+        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 0, 'SubWeeCenter', 'ww_update_center');
+        add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 1, 'SubWeeStudent', 'ww_update_center');
     }
 
     /**
