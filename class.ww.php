@@ -46,12 +46,8 @@ class WW_Management
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManage', 'WeeManager', 'WeeManager', 'manage_options');
-        /*
-        add_submenu_page('activity_admin', '活动列表', '活动列表', 'edit_posts', 'activity_admin', array('Activity_Admin', 'activity_admin_page'));
-        add_submenu_page('activity_admin', '活动设置', '活动设置', 'edit_posts', 'activity_admin_setting', array('Activity_Admin', 'activity_admin_setting'));
-        */
-
+        add_menu_page('WeeManage', 'WeeManager', 'WeeManager', 'list_users');
+        add_submenu_page('WeeStudent', 'WeeStudent', 'WeeStudent', 'edit_posts');
     }
 
     /**
