@@ -5,24 +5,12 @@ class WW_Management
 
     public static function ww_init()
     {
-        //add_action('admin_menu', 'ww_load_menu');
-        /*
-        add_action('admin_post_activity_signup', array('Activity_Signup', 'activity_signup_frontend_add'));
-        add_action('admin_post_nopriv_activity_signup', array('Activity_Signup', 'activity_signup_frontend_add'));
-        if (!self::$activity_initialed) {
-            self::activity_init_hooks();
-        }
-        */
+        
     }
 
     public static function ww_activation()
     {
         self::ww_init_database();
-        if(is_admin)
-        {
-            add_action('admin_menu', array('WW_Management','ww_load_menu');
-
-        }
     }
 
     public static function ww_deactivation()
