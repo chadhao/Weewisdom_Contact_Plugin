@@ -21,4 +21,9 @@ define('WW_Management_DIR', plugin_dir_path(__FILE__));
 register_activation_hook(__FILE__, array('WW_Management', 'ww_activation'));
 register_deactivation_hook(__FILE__, array('WW_Management', 'ww_deactivation'));
 
+if(is_admin)
+{
+	add_action('admin_menu', array('WW_Management','ww_load_menu'));
+}
+
 
