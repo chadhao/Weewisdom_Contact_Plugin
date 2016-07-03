@@ -25,7 +25,7 @@ class WW_Management
 
     public static function ww_update_center()
     {
-        echo "This is center updateing function";
+        echo "This is center updating function";
     }
 
 
@@ -37,7 +37,7 @@ class WW_Management
     {
         add_menu_page('WeeManager', 'WeeManager', 'manage_options', 'Wee_Menu', '', '', 2);
         add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 0, 'SubWeeCenter', 'ww_update_center');
-        add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 1, 'SubWeeStudent', 'ww_update_center');
+        add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 1, 'SubWeeStudent', 'ww_update_student');
     }
 
     /**
