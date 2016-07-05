@@ -20,9 +20,9 @@ class WW_Management
 
     }
 
-    public static function ww_update_student()
+    public static function ww_update_enquiry()
     {
-        echo "This is student updating function";
+        echo "This is enquiry updating function";
     }
 
     public static function ww_update_center()
@@ -39,7 +39,7 @@ class WW_Management
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Management', 'ww_update_center'), 'dashicons-carrot', 6);
         add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Management', 'ww_update_center'));
-        add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 'edit_pages', 'SubWeeStudent', array('WW_Management', 'ww_update_student'));
+        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Management', 'ww_update_enquiry'));
     }
 
     /**
@@ -70,7 +70,7 @@ class WW_Management
     {
         global $wpdb;
         $ww_table_name_center = $wpdb->prefix.'ww_center';
-        $ww_table_name_student = $wpdb->prefix.'ww_student';
+        $ww_table_name_enquiry = $wpdb->prefix.'ww_enquiry';
         $ww_charset_collate = $wpdb->get_charset_collate();
 
         $ww_center_sql = "CREATE TABLE $ww_table_name_center (
@@ -85,29 +85,27 @@ class WW_Management
         CONSTRAINT pk_center_id PRIMARY KEY (center_id)
         ) $ww_charset_collate;";
 
-        $ww_student_sql = "CREATE TABLE $ww_table_name_student (
-        std_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+        $ww_enquiry_sql = "CREATE TABLE $ww_table_name_enquiry (
+        enq_id int(10) unsigned NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL,
         email varchar(255) NOT NULL,
         phone varchar(15) NOT NULL,
         address varchar(255) NOT NULL,
-        age int(5),
-        gender boolean DEFAULT false NOT NULL, /*false = male, true = female*/
-            /*
-            homebase_id,
-            exchange_id,
-            */
-            center_id int(5) unsigned,
-            is_enrolled boolean DEFAULT false NOT NULL,
-            CONSTRAINT pk_std_id PRIMARY KEY (std_id),
-            CONSTRAINT fk_center_id FOREIGN KEY (center_id) REFERENCES ".$ww_table_name_center."(center_id)
-            ) $ww_charset_collate;";
+        /*
+        homebase_id,
+        exchange_id,
+        */
+        center_id int(5) unsigned,
+        is_contacted boolean DEFAULT false NOT NULL,
+        CONSTRAINT pk_enq_id PRIMARY KEY (enq_id),
+        CONSTRAINT fk_center_id FOREIGN KEY (center_id) REFERENCES ".$ww_table_name_center."(center_id)
+        ) $ww_charset_collate;";
 
-            require_once ABSPATH.'wp-admin/includes/upgrade.php';
-            dbDelta($ww_center_sql);
-            dbDelta($ww_student_sql);
+        require_once ABSPATH.'wp-admin/includes/upgrade.php';
+        dbDelta($ww_center_sql);
+        dbDelta($ww_enquiry_sql);
 
-        }
+    }
 
     /**
      * Initialize wordpress hooks.
