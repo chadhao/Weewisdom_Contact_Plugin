@@ -81,7 +81,6 @@ class WW_Management
         address varchar(255) NOT NULL,
         scale int(10),
         current int(10),
-        is_full boolean DEFAULT false NOT NULL,
         CONSTRAINT pk_center_id PRIMARY KEY (center_id)
         ) $ww_charset_collate;";
 
