@@ -11,10 +11,8 @@ class WW_Management
     public static function ww_activation()
     {
         self::ww_init_database();
-        if(is_admin())
-        {
-            add_action('admin_menu', 'ww_load_menu');
-        }
+        add_action('admin_menu', 'ww_load_menu');
+
     }
 
     public static function ww_deactivation()
