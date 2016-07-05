@@ -37,7 +37,7 @@ class WW_Management
 
     public static function ww_load_menu()   
     {
-        add_menu_page('WeeCenter', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Management', 'ww_update_center'), 'dashicons-carrot', 6);
+        add_menu_page('WeeManager', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Management', 'ww_update_center'), 'dashicons-carrot', 6);
         add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'SubWeeCenter', array('WW_Management', 'ww_update_center'));
         add_submenu_page('Wee_Menu', 'WeeStudent', 'WeeStudent', 'edit_pages', 'SubWeeStudent', array('WW_Management', 'ww_update_student'));
     }
