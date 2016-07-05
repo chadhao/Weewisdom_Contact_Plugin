@@ -11,11 +11,15 @@ class WW_Management
     public static function ww_activation()
     {
         self::ww_init_database();
+        if(is_admin)
+        {
+            add_action('admin_menu', 'ww_load_menu');
+        }
     }
 
     public static function ww_deactivation()
     {
-        
+
     }
 
     public static function ww_update_student()
@@ -25,7 +29,7 @@ class WW_Management
 
     public static function ww_update_center()
     {
-        echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaThis is center updating function";
+        echo "This is center updating function";
     }
 
 
@@ -73,25 +77,25 @@ class WW_Management
         //
 
         $ww_center_sql = "CREATE TABLE $ww_table_name_center (
-			center_id int(5) unsigned NOT NULL AUTO_INCREMENT,
-			name varchar(255) NOT NULL,
-			email varchar(255) NOT NULL,
-			phone varchar(15) NOT NULL,
-            address varchar(255) NOT NULL,
-            scale int(10),
-            current int(10),
-            is_full boolean DEFAULT false NOT NULL,
-			CONSTRAINT pk_center_id PRIMARY KEY (center_id)
-		) $ww_charset_collate;";
+        center_id int(5) unsigned NOT NULL AUTO_INCREMENT,
+        name varchar(255) NOT NULL,
+        email varchar(255) NOT NULL,
+        phone varchar(15) NOT NULL,
+        address varchar(255) NOT NULL,
+        scale int(10),
+        current int(10),
+        is_full boolean DEFAULT false NOT NULL,
+        CONSTRAINT pk_center_id PRIMARY KEY (center_id)
+        ) $ww_charset_collate;";
 
-         $ww_student_sql = "CREATE TABLE $ww_table_name_student (
-            std_id int(10) unsigned NOT NULL AUTO_INCREMENT,
-            name varchar(255) NOT NULL,
-            email varchar(255) NOT NULL,
-            phone varchar(15) NOT NULL,
-            address varchar(255) NOT NULL,
-            age int(5),
-            gender boolean DEFAULT false NOT NULL, /*false = male, true = female*/
+        $ww_student_sql = "CREATE TABLE $ww_table_name_student (
+        std_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+        name varchar(255) NOT NULL,
+        email varchar(255) NOT NULL,
+        phone varchar(15) NOT NULL,
+        address varchar(255) NOT NULL,
+        age int(5),
+        gender boolean DEFAULT false NOT NULL, /*false = male, true = female*/
             /*
             homebase_id,
             exchange_id,
@@ -100,13 +104,13 @@ class WW_Management
             is_enrolled boolean DEFAULT false NOT NULL,
             CONSTRAINT pk_std_id PRIMARY KEY (std_id),
             CONSTRAINT fk_center_id FOREIGN KEY (center_id) REFERENCES ".$ww_table_name_center."(center_id)
-        ) $ww_charset_collate;";
+            ) $ww_charset_collate;";
 
-        require_once ABSPATH.'wp-admin/includes/upgrade.php';
-        dbDelta($ww_center_sql);
-        dbDelta($ww_student_sql);
+            require_once ABSPATH.'wp-admin/includes/upgrade.php';
+            dbDelta($ww_center_sql);
+            dbDelta($ww_student_sql);
 
-    }
+        }
 
     /**
      * Initialize wordpress hooks.
