@@ -5,13 +5,13 @@ class WW_Management
 
     public static function ww_init()
     {
-
+        add_action('admin_menu', 'ww_load_menu');
     }
 
     public static function ww_activation()
     {
         self::ww_init_database();
-        add_action('admin_menu', 'ww_load_menu');
+        //add_action('admin_menu', 'ww_load_menu');
 
     }
 
@@ -72,7 +72,6 @@ class WW_Management
         $ww_table_name_center = $wpdb->prefix.'ww_center';
         $ww_table_name_student = $wpdb->prefix.'ww_student';
         $ww_charset_collate = $wpdb->get_charset_collate();
-        //
 
         $ww_center_sql = "CREATE TABLE $ww_table_name_center (
         center_id int(5) unsigned NOT NULL AUTO_INCREMENT,
