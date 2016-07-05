@@ -25,7 +25,7 @@ class WW_Management
 
     public static function ww_update_center()
     {
-        echo "This is center updating function";
+        echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaThis is center updating function";
     }
 
 
