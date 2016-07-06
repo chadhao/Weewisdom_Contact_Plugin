@@ -18,14 +18,14 @@ if (!function_exists('add_action')) {
 define('WW_Management_URL', plugin_dir_url(__FILE__));
 define('WW_Management_DIR', plugin_dir_path(__FILE__));
 
-register_activation_hook(__FILE__, array('WW_Management', 'ww_activation'));
-register_deactivation_hook(__FILE__, array('WW_Management', 'ww_deactivation'));
+register_activation_hook(__FILE__, array('WW_Module', 'ww_activation'));
+register_deactivation_hook(__FILE__, array('WW_Module', 'ww_deactivation'));
 
 
 if(is_admin())
 {
 	require_once WW_Management_DIR.'class.ww.php';
-	add_action('init', array('WW_Management','ww_init'));
+	add_action('init', array('WW_Module','ww_init'));
 }
 
 
