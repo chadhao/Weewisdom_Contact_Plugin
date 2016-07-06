@@ -19,29 +19,52 @@ class WW_Module
 
     }
 
+
     public static function ww_update_enquiry()
     {
 
+
     }
+
+    public static function ww_add_enquiry()
+    {
+        global $wpdb;
+        $wpdb->insert
+        ('wp_ww_enquiry',
+            array('name'=>'Pokemon', 'email'=>'pk@nintendo.com', 'phone'=>'0223456789', 'address'=>'123 symond street', 'center_id'=> 2, 'is_contacted'=>FALSE),
+            array('%s','%s','%s','%s', '%d','%d')
+        );
+    }
+
+    public static function ww_show_enquiry()
+    {
+        global $wpdb;
+        $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry;");
+        var_dump($result);
+    }
+
+
+
 
     public static function ww_update_center()
     {   
         global $wpdb;
-        $wpdb->update('wp_ww_center', 
+        $wpdb->update
+        ('wp_ww_center', 
             array( 'name' =>'good', 'phone' => '00000000000'), 
             array( 'center_id' => 1 ), 
             array( '%s', '%s')
-            //array('%d')
         );
     }
 
     public static function ww_add_center()
     {
         global $wpdb;
-        $wpdb->insert('wp_ww_center',
+        $wpdb->insert
+        ('wp_ww_center',
             array('name'=>'Joke', 'email'=>'abs@123.com', 'phone'=>'0222221111', 'address'=>'123 symond street'),
             array('%s','%s','%s','%s')
-            );
+        );
 
     }
 
@@ -61,8 +84,8 @@ class WW_Module
     public static function ww_load_menu()   
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
-        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_center'));
-        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_update_center'));
+        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_enquiry'));
+        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_add_enquiry'));
     }
 
     /**
