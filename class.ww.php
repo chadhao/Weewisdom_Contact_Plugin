@@ -32,7 +32,7 @@ class WW_Module
         {
             case "show":
                 $result = $wpdb->get_results( "SELECT * FROM wp_ww_center;" );
-                var_dump($result);
+                echo var_dump($result);
                 break;
 
             case "delete":
@@ -93,8 +93,6 @@ class WW_Module
         email varchar(255) NOT NULL,
         phone varchar(15) NOT NULL,
         address varchar(255) NOT NULL,
-        scale int(10),
-        current int(10),
         CONSTRAINT pk_center_id PRIMARY KEY (center_id)
         ) $ww_charset_collate;";
 
