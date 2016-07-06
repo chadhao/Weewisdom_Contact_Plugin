@@ -79,10 +79,10 @@ class WW_Module
 
     }
 
-    public static function ww_del_enquiry()
+    public static function ww_del_center()
     {
         global $wpdb;
-        $wpdb->delete('wp_ww_center', array( 'center_id' => 1 ) );
+        $wpdb->delete('wp_ww_center', array( 'center_id' => 1 ));
     }
 
     public static function ww_show_center()
