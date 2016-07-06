@@ -5,7 +5,7 @@ class WW_Module
 
     public static function ww_init()
     {
-        add_action('admin_menu', array('WW_Management', 'ww_load_menu'));
+        add_action('admin_menu', array('WW_Module', 'ww_load_menu'));
     }
 
     public static function ww_activation()
@@ -37,9 +37,9 @@ class WW_Module
 
     public static function ww_load_menu()   
     {
-        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Management', 'ww_update_center'), 'dashicons-smiley', 2);
-        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Management', 'ww_update_center'));
-        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Management', 'ww_update_enquiry'));
+        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
+        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'));
+        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_update_enquiry'));
     }
 
     /**
