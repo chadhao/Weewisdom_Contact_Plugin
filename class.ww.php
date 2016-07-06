@@ -44,7 +44,7 @@ class WW_Module
     public static function ww_del_enquiry()
     {
         global $wpdb;
-        $wpdb->delete('wp_ww_enquiry', array( 'ID' => 1 ) );
+        $wpdb->delete('wp_ww_enquiry', array( 'enq_id' => 1 ) );
     }
 
     public static function ww_show_enquiry()
