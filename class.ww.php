@@ -22,8 +22,13 @@ class WW_Module
 
     public static function ww_update_enquiry()
     {
-
-
+        global $wpdb;
+        $wpdb->update
+        ('wp_ww_enquiry', 
+            array( 'name' =>'Taku', 'phone' => '0112233445', 'center_id'=> 1, 'is_contacted' => TRUE), 
+            array( 'enq_id' => 1 ), 
+            array( '%s', '%s', '%d', '%d')
+        );
     }
 
     public static function ww_add_enquiry()
