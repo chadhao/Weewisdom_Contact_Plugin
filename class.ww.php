@@ -79,6 +79,12 @@ class WW_Module
 
     }
 
+    public static function ww_del_enquiry()
+    {
+        global $wpdb;
+        $wpdb->delete('wp_ww_center', array( 'center_id' => 1 ) );
+    }
+
     public static function ww_show_center()
     {
         global $wpdb;
@@ -95,8 +101,8 @@ class WW_Module
     public static function ww_load_menu()   
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
-        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_enquiry'));
-        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_del_enquiry'));
+        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_center'));
+        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_del_center'));
     }
 
     /**
