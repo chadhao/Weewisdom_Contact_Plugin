@@ -21,24 +21,27 @@ class WW_Module
 
     public static function ww_update_enquiry($method)
     {
+
+    }
+
+    public static function ww_update_center()
+    {
         global $wpdb;
 
         switch($method)
         {
             case "show":
-                $result = $wpdb->get_results ( "SELECT * FROM wp_ww_center;" );
+                $result = $wpdb->get_results( "SELECT * FROM wp_ww_center;" );
                 var_dump($result);
+                break;
 
             case "delete":
+            break;
 
             case "add":
+            break;
 
         }
-    }
-
-    public static function ww_update_center()
-    {
-        echo "This is center updating function";
     }
 
 
