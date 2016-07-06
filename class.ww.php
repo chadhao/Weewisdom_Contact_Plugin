@@ -19,29 +19,17 @@ class WW_Module
 
     }
 
-    public static function ww_update_enquiry($method)
+    public static function ww_update_enquiry()
     {
 
     }
 
-    public static function ww_update_center()
+    public static function ww_show_center()
     {
         global $wpdb;
+        $result = $wpdb->get_results("SELECT * FROM wp_ww_center;");
+        var_dump($result);
 
-        switch($method)
-        {
-            case "show":
-                $result = $wpdb->get_results( "SELECT * FROM wp_ww_center;" );
-                echo var_dump($result);
-                break;
-
-            case "delete":
-            break;
-
-            case "add":
-            break;
-
-        }
     }
 
 
@@ -52,7 +40,7 @@ class WW_Module
     public static function ww_load_menu()   
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
-        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center("show")'));
+        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'));
         add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_update_enquiry'));
     }
 
