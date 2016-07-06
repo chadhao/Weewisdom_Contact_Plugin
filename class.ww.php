@@ -1,6 +1,6 @@
 <?php
 
-class WW_Management
+class WW_Module
 {
 
     public static function ww_init()
