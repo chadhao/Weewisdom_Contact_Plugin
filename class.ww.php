@@ -28,9 +28,10 @@ class WW_Module
     {   
         global $wpdb;
         $wpdb->update('wp_ww_center', 
-            array( 'name' => 'cool',  'phone' => '1111111111'), 
+            array( 'name' =>'cool', 'phone' => '1111111111'), 
             array( 'center_id' => 1 ), 
-            array( '%s', '%s')
+            array( '%s', '%s'),
+            array('%d')
         );
     }
 
