@@ -30,8 +30,8 @@ class WW_Module
         $wpdb->update('wp_ww_center', 
             array( 'name' =>'cool', 'phone' => '1111111111'), 
             array( 'center_id' => 1 ), 
-            array( '%s', '%s'),
-            array('%d')
+            array( '%s', '%s')
+            //array('%d')
         );
     }
 
