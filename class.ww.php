@@ -39,7 +39,7 @@ class WW_Module
         global $wpdb;
         $wpdb->insert('wp_ww_center',
             array('name'=>'Joke', 'email'=>'abs@123.com', 'phone'=>'0222221111', 'address'=>'123 symond street'),
-            array('%s','%s','%s','%s'),
+            array('%s','%s','%s','%s')
             );
 
     }
