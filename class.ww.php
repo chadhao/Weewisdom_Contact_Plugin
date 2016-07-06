@@ -24,17 +24,27 @@ class WW_Module
 
     }
 
+    public static function ww_update_center()
+    {   
+        global $wpdb;
+        $wpdb->update('wp_ww_center', 
+            array( 'name' => 'cool',  'phone' => '1111111111'), 
+            array( 'center_id' => 1 ), 
+            array( '%s', '%s'),
+        );
+    }
+
     public static function ww_add_center()
     {
         global $wpdb;
         $wpdb->insert('wp_ww_center',
             array('name'=>'Joke', 'email'=>'abs@123.com', 'phone'=>'0222221111', 'address'=>'123 symond street'),
-            array('%s','%s','%s','%s')
+            array('%s','%s','%s','%s'),
             );
 
     }
 
-     public static function ww_show_center()
+    public static function ww_show_center()
     {
         global $wpdb;
         $result = $wpdb->get_results("SELECT * FROM wp_ww_center;");
@@ -51,7 +61,7 @@ class WW_Module
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
         add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_center'));
-        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_add_center'));
+        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_update_center'));
     }
 
     /**
