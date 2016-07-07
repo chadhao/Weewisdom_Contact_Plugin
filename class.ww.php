@@ -47,7 +47,7 @@ class WW_Module
         $wpdb->delete('wp_ww_enquiry', array( 'enq_id' => 1 ) );
     }
 
-    public static function ww_show_enquiry()
+    public static function ww_get_enquiry()
     {
         global $wpdb;
         $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry;");
@@ -85,7 +85,7 @@ class WW_Module
         $wpdb->delete('wp_ww_center', array( 'center_id' => 1 ));
     }
 
-    public static function ww_show_center()
+    public static function ww_get_center()
     {
         global $wpdb;
         $result = $wpdb->get_results("SELECT * FROM wp_ww_center;");
