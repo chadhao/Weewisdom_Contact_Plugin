@@ -36,8 +36,8 @@ class WW_Module
         global $wpdb;
         $wpdb->insert
         ('wp_ww_enquiry',
-            array('name'=>'Pokemon', 'email'=>'pk@nintendo.com', 'phone'=>'0223456789', 'address'=>'123 symond street', 'center_id'=> 2, 'is_contacted'=>FALSE),
-            array('%s','%s','%s','%s', '%d','%d')
+            array('name'=>'Pokemon', 'email'=>'pk@nintendo.com', 'phone'=>'0223456789', 'center_id'=> 2, 'is_contacted'=>FALSE),
+            array('%s','%s','%s', '%d','%d')
         );
     }
 
@@ -106,27 +106,6 @@ class WW_Module
     }
 
     /**
-     * Determining if required table exists.
-     *
-     * @global type $wpdb
-     *
-     * @return bool
-     */
-    /*
-    private static function activity_is_table_created( $activity_table_name ) {
-        global $wpdb;
-        $activity_table_dbname = DB_NAME;
-        $activity_table_sql = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = '$activity_table_dbname' AND table_name = '$activity_table_name'";
-        $activity_table_count = $wpdb->get_var( $activity_table_sql );
-
-        if ( $activity_table_count > 0 ) {
-            return true;
-        }
-        return false;
-    }
-    */
-
-    /**
      * Initialize plugin database.
      */
     private static function ww_init_database()
@@ -150,8 +129,8 @@ class WW_Module
         name varchar(255) NOT NULL,
         email varchar(255) NOT NULL,
         phone varchar(15) NOT NULL,
-        address varchar(255) NOT NULL,
         /*
+        address varchar(255) NOT NULL,
         homebase_id,
         exchange_id,
         */
