@@ -109,7 +109,7 @@ class WW_Module
             "<td>address</td>".
           "</tr>\n";
 
-          foreach ($list as $piece) {
+          foreach ($center_list as $piece) {
               echo '<tr>'.
               '<td>'.$piece->center_id.'</td>'.
               '<td>'.$piece->name.'</td>'.
