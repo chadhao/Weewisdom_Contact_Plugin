@@ -115,7 +115,8 @@ class WW_Module
               '<td>'.$piece->name.'</td>'.
               '<td>'.$piece->email.'</td>'.
               '<td>'.$piece->phone.'</td>'.
-              '<td>'.$piece->address.'</td>';
+              '<td>'.$piece->address.'</td>'.
+              '</tr>';
           }
 
       echo  "</table>";
