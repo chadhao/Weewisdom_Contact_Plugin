@@ -24,9 +24,9 @@ class WW_Module
     {
         global $wpdb;
         $wpdb->update
-        ('wp_ww_enquiry', 
-            array( 'name' =>'Taku', 'phone' => '0112233445', 'center_id'=> 1, 'is_contacted' => TRUE), 
-            array( 'enq_id' => 1 ), 
+        ('wp_ww_enquiry',
+            array( 'name' =>'Taku', 'phone' => '0112233445', 'center_id'=> 1, 'is_contacted' => TRUE),
+            array( 'enq_id' => 1 ),
             array( '%s', '%s', '%d', '%d')
         );
     }
@@ -58,12 +58,12 @@ class WW_Module
 
 
     public static function ww_update_center()
-    {   
+    {
         global $wpdb;
         $wpdb->update
-        ('wp_ww_center', 
-            array( 'name' =>'good', 'phone' => '00000000000'), 
-            array( 'center_id' => 1 ), 
+        ('wp_ww_center',
+            array( 'name' =>'good', 'phone' => '00000000000'),
+            array( 'center_id' => 1 ),
             array( '%s', '%s')
         );
     }
@@ -90,15 +90,47 @@ class WW_Module
         global $wpdb;
         $result = $wpdb->get_results("SELECT * FROM wp_ww_center;");
         return $result;
-
     }
+
+    public static function ww_show_center()
+    {
+      $center_list = WW_Module::ww_get_center();
+      if(!$center_list)
+      {
+        echo "Can not identify any center information!";
+      }
+      echo '
+      <div>
+        <table>
+          <tr>
+            <td>center_id</td>
+            <td>name</td>
+            <td>email</td>
+            <td>phone</td>
+            <td>address</td>
+          </tr>
+          ';
+            foreach ($list as $piece) {
+              echo '<tr>'.
+              '<td>'.$piece->center_id.'</td>'.
+              '<td>'.$piece->name.'</td>'.
+              '<td>'.$piece->email.'</td>'.
+              '<td>'.$piece->phone.'</td>'.
+              '<td>'.$piece->address.'</td>'.
+            }
+        echo '
+        </table>
+      </div>
+      ';
+    }
+
 
 
     public static function ww_uninstall()
     {
     }
 
-    public static function ww_load_menu()   
+    public static function ww_load_menu()
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
         add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_center'));
