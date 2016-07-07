@@ -89,7 +89,7 @@ class WW_Module
     {
         global $wpdb;
         $result = $wpdb->get_results("SELECT * FROM wp_ww_center;");
-        var_dump($result);
+        return $result;
 
     }
 
