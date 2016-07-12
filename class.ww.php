@@ -69,7 +69,8 @@ class WW_Module
     public static function ww_add_center()
     {
         include WW_Management_DIR.'views/add_center.php';
-        global $wpdb;
+        //global $wpdb;
+        /*
         if ($_POST['name']&&$_POST['email']&&$_POST['phone']&&$_POST['address']) 
         {
             $input=array('name'=>$_POST['name'], 'email'=>$_POST['email'], 'phone'=>$_POST['phone'], 'address'=>$_POST['address']);   
@@ -80,7 +81,8 @@ class WW_Module
             );
             return true;
         }
-        return false;
+        */
+        //return false;
 
     }
 
