@@ -82,7 +82,8 @@ class WW_Module
             return true;
         }
         */
-        echo '<h3><a href="<?php echo 'esc_url(self::ww_manage_get_url("add_center"))';?>">Add Center</h3>';
+        $input = esc_url(self::ww_manage_get_url('add_center'));
+        echo "<h3><a href=".$input.">add button</h3>";
         //return false;
 
     }
