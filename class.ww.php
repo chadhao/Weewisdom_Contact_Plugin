@@ -55,8 +55,6 @@ class WW_Module
     }
 
 
-
-
     public static function ww_update_center()
     {
         global $wpdb;
@@ -70,12 +68,19 @@ class WW_Module
 
     public static function ww_add_center()
     {
+        include WW_Management_DIR.'views/add_center.php';
         global $wpdb;
-        $wpdb->insert
-        ('wp_ww_center',
-            array('name'=>'Joke', 'email'=>'abs@123.com', 'phone'=>'0222221111', 'address'=>'123 symond street'),
-            array('%s','%s','%s','%s')
-        );
+        if ($_POST['name']&&$_POST['email']&&$_POST['phone']&&$_POST['address']) 
+        {
+            $input=array('name'=>$_POST['name'], 'email'=>$_POST['email'], 'phone'=>$_POST['phone'], 'address'=>$_POST['address']);   
+            $wpdb->insert
+            ('wp_ww_center',
+                array('name'=>$input['name'], 'email'=>$input['email'], 'phone'=>$input['phone'], 'address'=>$input['address']),
+                array('%s','%s','%s','%s')
+            );
+            return true;
+        }
+        return false;
 
     }
 
@@ -121,6 +126,7 @@ class WW_Module
 
       echo  "</table>";
       echo "</div>";
+      echo '<h3><a href="<?php echo esc_url(self::ww_manage_get_url('add_center'));?>">Add Center</h3>';
     }
 
 
@@ -131,11 +137,31 @@ class WW_Module
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
-        add_submenu_page('Wee_Menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'Wee_Menu', array('WW_Module', 'ww_show_center'));
-        add_submenu_page('Wee_Menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'SubWeeEnquiry', array('WW_Module', 'ww_add_center'));
+        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
+        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_show_center'));
+        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_add_center'));
     }
 
+    public static function ww_manage_page()
+    {
+        if (isset($_GET['cen_action'])) 
+        {
+            if ($_GET['cen_action'] == 'add_center') 
+            {
+                self::ww_add_center();
+            }
+        }
+    }
+
+    public static function ww_manage_get_url($action)
+    {
+        if ($action == 'add_center') 
+        {
+            $args = array('page' => 'cen_action', 'cen_action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+        } 
+        $url = add_query_arg($args, admin_url('admin.php'));
+        return $url;
+    }
     /**
      * Initialize plugin database.
      */
@@ -161,7 +187,6 @@ class WW_Module
         email varchar(255) NOT NULL,
         phone varchar(15) NOT NULL,
         /*
-        address varchar(255) NOT NULL,
         homebase_id,
         exchange_id,
         */
