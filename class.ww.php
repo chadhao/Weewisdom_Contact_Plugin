@@ -140,8 +140,10 @@ class WW_Module
     public static function ww_manage_page()
     {
 
-       if ($_GET['action'] == 'cen_cation') {
-            self::ww_add_center();
+       if (isset($_GET['action']) || isset($_GET['signup_action'])) {
+            if ($_GET['action'] == 'cen_action') {
+                self::ww_add_center();
+            }
         }
 
     }
