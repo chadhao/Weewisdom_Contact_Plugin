@@ -140,11 +140,9 @@ class WW_Module
     public static function ww_manage_page()
     {
         if (isset($_GET['cen_action'])) 
-        {
-            if ($_GET['cen_action'] == 'add_center') 
-            {
+        {     
                 self::ww_add_center();
-            }
+ 
         }
     }
 
