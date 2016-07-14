@@ -68,23 +68,14 @@ class WW_Module
 
     public static function ww_add_center()
     {
-        include WW_Management_DIR.'views/add_center.php';
-        //global $wpdb;
-        /*
-        if ($_POST['name']&&$_POST['email']&&$_POST['phone']&&$_POST['address']) 
-        {
-            $input=array('name'=>$_POST['name'], 'email'=>$_POST['email'], 'phone'=>$_POST['phone'], 'address'=>$_POST['address']);   
-            $wpdb->insert
-            ('wp_ww_center',
-                array('name'=>$input['name'], 'email'=>$input['email'], 'phone'=>$input['phone'], 'address'=>$input['address']),
-                array('%s','%s','%s','%s')
+        WW_Module::ww_view('add_center');
+        global $wpdb;
+        $input=array('name'=>'Stark', 'email'=>'winter@kings.com', 'phone'=>'0232224455', 'address'=>'Winterfell');   
+        $wpdb->insert
+        ('wp_ww_center',
+            array('name'=>$input['name'], 'email'=>$input['email'], 'phone'=>$input['phone'], 'address'=>$input['address']),
+            array('%s','%s','%s','%s')
             );
-            return true;
-        }
-        */
-        $input = esc_url(self::ww_manage_get_url('add_center'));
-        echo "<h3><a href=".$input.">add button</h3>";
-        //return false;
 
     }
 
@@ -141,9 +132,9 @@ class WW_Module
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_update_center'), 'dashicons-smiley', 2);
-        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_show_center'));
-        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_add_center'));
+        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_manage_page'), 'dashicons-smiley', 2);
+        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_manage_page'));
+        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
     }
 
     public static function ww_manage_page()
@@ -161,11 +152,12 @@ class WW_Module
     {
         if ($action == 'add_center') 
         {
-            $args = array('page' => 'cen_action', 'cen_action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         } 
         $url = add_query_arg($args, admin_url('admin.php'));
         return $url;
     }
+
     /**
      * Initialize plugin database.
      */
@@ -213,10 +205,10 @@ class WW_Module
     {
     }
 
-    /*
+    
     public static function ww_view($file_name)
     {
-        include ACTIVITY__PLUGIN_DIR.'views/'.$file_name.'.php';
+        include WW_Management_DIR.'views/'.$file_name.'.php';
     }
-    */
+    
 }
