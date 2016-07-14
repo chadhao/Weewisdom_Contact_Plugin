@@ -74,7 +74,7 @@ class WW_Module
 
     public static function ww_add_center()
     {
-        //include WW_Management_DIR.'views/add_center.php';
+        include WW_Management_DIR.'views/add_center.php';
         global $wpdb;
         $input=array('name'=>'Stark', 'email'=>'winter@kings.com', 'phone'=>'0232224455', 'address'=>'Winterfell');   
         $wpdb->insert
