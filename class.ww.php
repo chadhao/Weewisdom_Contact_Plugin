@@ -133,9 +133,9 @@ class WW_Module
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'), 'dashicons-smiley', 2);
-        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'));
-        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
+        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'wee_menu', array('WW_Module', 'ww_manage_page'), 'dashicons-smiley', 2);
+        add_submenu_page('wee_menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'));
+        add_submenu_page('wee_menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
     }
 
     public static function ww_manage_page()
