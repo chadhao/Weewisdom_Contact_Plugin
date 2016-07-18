@@ -15,7 +15,7 @@ if (!$add_new) {
 ?>
 
 <div class="wrap">
-	<form class="am-form" method="post" action="<?php echo esc_url(Activity_Admin::activity_admin_get_url('activity_admin_process_post'));?>">
+	<form class="am-form" method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('activity_admin_process_post'));?>">
 		<fieldset>
 
 			<legend><?php echo $add_new ? '添加活动' : '编辑活动'; ?></legend>
