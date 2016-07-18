@@ -1,3 +1,5 @@
 <div class="wrap">
-<a href="<?php echo esc_url(WW_Module::ww_manage_get_url('add_center')); ?>" class="page-title-action">ADD CENTER</a>
+	<form name="activity_admin_setting" id="add_center" method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('add_center'));?>">
+		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Add Center"/></p>
+	</form>
 </div>

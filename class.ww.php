@@ -129,28 +129,23 @@ class WW_Module
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'), 'dashicons-smiley', 2);
-        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'));
-        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
+        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_manage_page'), 'dashicons-smiley', 2);
+        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_manage_page'));
+        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_add_center'));
     }
 
     public static function ww_manage_page()
-    {
-    
-       if (isset($_GET['action'])) {
-            if ($_GET['action'] == 'add_center') {
+    {     
+          if ($_POST['add_center']) {
                 self::ww_add_center();
-            }
-        }
-        
-
+          }
     }
 
     public static function ww_manage_get_url($action)
     {
         if ($action == 'add_center') 
         {
-            $args = array('page' => 'wee_menu', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         } 
         $url = add_query_arg($args, admin_url('admin.php'));
         return $url;
