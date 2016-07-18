@@ -5,6 +5,7 @@ if(!$center_list)
 	echo "Can not identify any center information!";
 }
 ?>
+<?php else{ ?>
 <div>
   <table>
     <tr>
@@ -26,3 +27,4 @@ if(!$center_list)
      ?>
   </table>
 </div>
+<?php } ?>
