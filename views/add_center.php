@@ -1,4 +1,4 @@
-<form action="action_page.php">
+<form class="am-form" method="post" action="<?php echo esc_url(WW_Module::ww_add_center());?>">
   Title:<br>
   <input type="text" name="title"><br>
   Address:<br>
