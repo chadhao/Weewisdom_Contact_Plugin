@@ -2,16 +2,15 @@
 
 class WW_Module
 {
-
-    public static function ww_init()
-    {
-        add_action('admin_menu', array('WW_Module', 'ww_load_menu'));
-    }
-
     public static function ww_activation()
     {
         self::ww_init_database();
 
+    }
+
+    public static function ww_init()
+    {
+        add_action('admin_menu', array('WW_Module', 'ww_load_menu'));
     }
 
     public static function ww_deactivation()
@@ -65,12 +64,7 @@ class WW_Module
             array( '%s', '%s')
         );
     }
-
-    public static function ww_load_center_view()
-    {
-        include WW_Management_DIR.'views/add_center.php';    
-    }
-
+    
 
     public static function ww_add_center()
     {
@@ -135,8 +129,8 @@ class WW_Module
 
     public static function ww_load_menu()
     {
-        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'wee_menu', array('WW_Module', 'ww_add_center'), 'dashicons-smiley', 2);
-        add_submenu_page('wee_menu', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'));
+        add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'), 'dashicons-smiley', 2);
+        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'));
         add_submenu_page('wee_menu', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
     }
 
@@ -156,7 +150,7 @@ class WW_Module
     {
         if ($action == 'add_center') 
         {
-            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'wee_menu', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         } 
         $url = add_query_arg($args, admin_url('admin.php'));
         return $url;
