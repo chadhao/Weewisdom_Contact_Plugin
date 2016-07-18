@@ -66,10 +66,14 @@ class WW_Module
     }
     
 
-    public static function ww_add_center()
+    public static function ww_list_center()
     {
         include WW_Management_DIR.'views/add_center.php';
-        /*
+    }
+
+    public static function ww_add_center()
+    {
+        
         global $wpdb;
         $input=array('name'=>'Stark', 'email'=>'winter@kings.com', 'phone'=>'0232224455', 'address'=>'Winterfell');   
         $wpdb->insert
@@ -77,7 +81,7 @@ class WW_Module
             array('name'=>$input['name'], 'email'=>$input['email'], 'phone'=>$input['phone'], 'address'=>$input['address']),
             array('%s','%s','%s','%s')
         );
-        */
+        
         
     }
 
@@ -130,7 +134,7 @@ class WW_Module
     public static function ww_load_menu()
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'), 'dashicons-smiley', 2);
-        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_add_center'));
+        add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_list_center'));
         add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
     }
 
