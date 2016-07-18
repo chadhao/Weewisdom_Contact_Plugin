@@ -138,6 +138,7 @@ class WW_Module
         add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_show_center'));
     }
 
+    /*
     public static function ww_manage_page()
     {     
           if ($_POST['add_center']) {
@@ -154,6 +155,7 @@ class WW_Module
         $url = add_query_arg($args, admin_url('admin.php'));
         return $url;
     }
+    */
 
     /**
      * Initialize plugin database.
