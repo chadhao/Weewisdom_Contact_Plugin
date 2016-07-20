@@ -2,10 +2,11 @@
 
 class WW_Module
 {
+    const NONCE = 'ww_admin_key';
+
     public static function ww_activation()
     {
         self::ww_init_database();
-
     }
 
     public static function ww_init()
@@ -15,121 +16,112 @@ class WW_Module
 
     public static function ww_deactivation()
     {
-
     }
-
 
     public static function ww_update_enquiry()
     {
         global $wpdb;
-        $wpdb->update
-        ('wp_ww_enquiry',
-            array( 'name' =>'Taku', 'phone' => '0112233445', 'center_id'=> 1, 'is_contacted' => TRUE),
-            array( 'enq_id' => 1 ),
-            array( '%s', '%s', '%d', '%d')
+        $wpdb->update('wp_ww_enquiry',
+            array('name' => 'Taku', 'phone' => '0112233445', 'center_id' => 1, 'is_contacted' => true),
+            array('enq_id' => 1),
+            array('%s', '%s', '%d', '%d')
         );
     }
 
     public static function ww_add_enquiry()
     {
         global $wpdb;
-        $wpdb->insert
-        ('wp_ww_enquiry',
-            array('name'=>'Pokemon', 'email'=>'pk@nintendo.com', 'phone'=>'0223456789', 'center_id'=> 2, 'is_contacted'=>FALSE),
-            array('%s','%s','%s', '%d','%d')
+        $wpdb->insert('wp_ww_enquiry',
+            array('name' => 'Pokemon', 'email' => 'pk@nintendo.com', 'phone' => '0223456789', 'center_id' => 2, 'is_contacted' => false),
+            array('%s', '%s', '%s', '%d', '%d')
         );
     }
 
     public static function ww_del_enquiry()
     {
         global $wpdb;
-        $wpdb->delete('wp_ww_enquiry', array( 'enq_id' => 1 ) );
+        $wpdb->delete('wp_ww_enquiry', array('enq_id' => 1));
     }
 
     public static function ww_get_enquiry()
     {
         global $wpdb;
-        $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry;");
+        $result = $wpdb->get_results('SELECT * FROM wp_ww_enquiry;');
         var_dump($result);
     }
-
 
     public static function ww_update_center()
     {
         global $wpdb;
-        $wpdb->update
-        ('wp_ww_center',
-            array( 'name' =>'good', 'phone' => '00000000000'),
-            array( 'center_id' => 1 ),
-            array( '%s', '%s')
+        $wpdb->update('wp_ww_center',
+            array('name' => 'good', 'phone' => '00000000000'),
+            array('center_id' => 1),
+            array('%s', '%s')
         );
     }
-    
 
     public static function ww_list_center()
     {
-        include WW_Management_DIR.'views/add_center.php';
+        if ($_GET['action'] == 'add_center') {
+            self::ww_add_center();
+        } else {
+            include WW_Management_DIR.'views/add_center.php';
+        }
     }
 
     public static function ww_add_center()
     {
-        
         global $wpdb;
-        $input=array('name'=>'Stark', 'email'=>'winter@kings.com', 'phone'=>'0232224455', 'address'=>'Winterfell');   
-        $wpdb->insert
-        ('wp_ww_center',
-            array('name'=>$input['name'], 'email'=>$input['email'], 'phone'=>$input['phone'], 'address'=>$input['address']),
-            array('%s','%s','%s','%s')
+        $input = array('name' => 'Stark', 'email' => 'winter@kings.com', 'phone' => '0232224455', 'address' => 'Winterfell');
+        $wpdb->insert('wp_ww_center',
+            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
+            array('%s', '%s', '%s', '%s')
         );
-        
-        
     }
 
     public static function ww_del_center()
     {
         global $wpdb;
-        $wpdb->delete('wp_ww_center', array( 'center_id' => 1 ));
+        $wpdb->delete('wp_ww_center', array('center_id' => 1));
     }
 
     public static function ww_get_center()
     {
         global $wpdb;
-        $result = $wpdb->get_results("SELECT * FROM wp_ww_center;");
+        $result = $wpdb->get_results('SELECT * FROM wp_ww_center;');
+
         return $result;
     }
 
     public static function ww_show_center()
     {
-      $center_list = self::ww_get_center();
-      if(!$center_list)
-      {
-        echo "Can not identify any center information!";
-      }
-      echo "<div>";
-      echo "<table>\n";
-      echo  "<tr>\n".
-            "<td>center_id</td>".
-            "<td>name</td>".
-            "<td>email</td>".
-            "<td>phone</td>".
-            "<td>address</td>".
+        $center_list = self::ww_get_center();
+        if (!$center_list) {
+            echo 'Can not identify any center information!';
+        }
+        echo '<div>';
+        echo "<table>\n";
+        echo  "<tr>\n".
+            '<td>center_id</td>'.
+            '<td>name</td>'.
+            '<td>email</td>'.
+            '<td>phone</td>'.
+            '<td>address</td>'.
           "</tr>\n";
 
-          foreach ($center_list as $piece) {
-              echo '<tr>'.
+        foreach ($center_list as $piece) {
+            echo '<tr>'.
               '<td>'.$piece->center_id.'</td>'.
               '<td>'.$piece->name.'</td>'.
               '<td>'.$piece->email.'</td>'.
               '<td>'.$piece->phone.'</td>'.
               '<td>'.$piece->address.'</td>'.
               '</tr>';
-          }
+        }
 
-      echo  "</table>";
-      echo "</div>";
-      
+        echo  '</table>';
+        echo '</div>';
     }
-
 
     public static function ww_load_menu()
     {
@@ -140,22 +132,21 @@ class WW_Module
 
     /*
     public static function ww_manage_page()
-    {     
+    {
           if ($_POST['add_center']) {
                 self::ww_add_center();
           }
     }
-
+    */
     public static function ww_manage_get_url($action)
     {
-        if ($action == 'add_center') 
-        {
+        if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
-        } 
+        }
         $url = add_query_arg($args, admin_url('admin.php'));
+
         return $url;
     }
-    */
 
     /**
      * Initialize plugin database.
@@ -194,7 +185,6 @@ class WW_Module
         require_once ABSPATH.'wp-admin/includes/upgrade.php';
         dbDelta($ww_center_sql);
         dbDelta($ww_enquiry_sql);
-
     }
 
     /**
@@ -208,10 +198,8 @@ class WW_Module
     {
     }
 
-    
     public static function ww_view($file_name)
     {
         include WW_Management_DIR.'views/'.$file_name.'.php';
     }
-    
 }
