@@ -77,6 +77,7 @@ class WW_Module
              array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
             array('%s', '%s', '%s', '%s')
         );
+        ww_show_center();
     }
 
     public static function ww_del_center()
