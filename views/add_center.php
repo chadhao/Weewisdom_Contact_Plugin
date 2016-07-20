@@ -5,4 +5,4 @@
   <input type="text" name="address"><br><br>
   <input type="submit" value="ADD">
 </form>
-<h1><?php echo WW_Module::ww_manage_get_url('add_center');?></h1>
+
