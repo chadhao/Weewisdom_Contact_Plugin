@@ -71,13 +71,12 @@ class WW_Module
 
     public static function ww_add_center()
     {
-        echo '<h1>test</h1>';
-        // global $wpdb;
-        // $input = array('name' => 'Stark', 'email' => 'winter@kings.com', 'phone' => '0232224455', 'address' => 'Winterfell');
-        // $wpdb->insert('wp_ww_center',
-        //     array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
-        //     array('%s', '%s', '%s', '%s')
-        // );
+        global $wpdb;
+        $input = array('name' => 'Stark', 'email' => 'winter@kings.com', 'phone' => '0232224455', 'address' => 'Winterfell');
+        $wpdb->insert('wp_ww_center',
+             array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
+            array('%s', '%s', '%s', '%s')
+        );
     }
 
     public static function ww_del_center()
