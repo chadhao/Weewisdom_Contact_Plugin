@@ -63,14 +63,16 @@ class WW_Module
     public static function ww_list_center()
     {
         if ($_GET['action'] == 'add_center') {
-            include WW_Management_DIR.'views/add_center.php';
             //var_dump($_POST);
             $name = $_POST["name"];
             $address = $_POST["address"];
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             self::ww_add_center($name, $email, $address, $phone); 
-        } else {
+        }
+        if ($_GET['action'] == 'show_add') {
+            include WW_Management_DIR.'views/add_center.php';
+        else {
             include WW_Management_DIR.'views/list_center.php';
         }
     }
@@ -148,6 +150,9 @@ class WW_Module
     public static function ww_manage_get_url($action)
     {
         if ($action == 'add_center') {
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+        if ($action == 'show_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
         $url = add_query_arg($args, admin_url('admin.php'));
