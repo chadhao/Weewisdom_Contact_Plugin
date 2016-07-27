@@ -110,6 +110,8 @@ class WW_Module
         if (!$center_list) {
             echo 'Can not identify any center information!';
         }
+        else
+        {
         echo '<div>';
         echo "<table>\n";
         echo  "<tr>\n".
@@ -120,18 +122,19 @@ class WW_Module
             '<td>address</td>'.
           "</tr>\n";
 
-        foreach ($center_list as $piece) {
-            echo '<tr>'.
-              '<td>'.$piece->center_id.'</td>'.
-              '<td>'.$piece->name.'</td>'.
-              '<td>'.$piece->email.'</td>'.
-              '<td>'.$piece->phone.'</td>'.
-              '<td>'.$piece->address.'</td>'.
-              '</tr>';
-        }
+            foreach ($center_list as $piece) {
+                echo '<tr>'.
+                '<td>'.$piece->center_id.'</td>'.
+                '<td>'.$piece->name.'</td>'.
+                '<td>'.$piece->email.'</td>'.
+                '<td>'.$piece->phone.'</td>'.
+                '<td>'.$piece->address.'</td>'.
+                '</tr>';
+            }
 
-        echo  '</table>';
-        echo '</div>';
+            echo  '</table>';
+            echo '</div>';
+        }
     }
     */
 
@@ -155,7 +158,7 @@ class WW_Module
         if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        if ($action == 'show_center') {
+        if ($action == 'show_add') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
         $url = add_query_arg($args, admin_url('admin.php'));
