@@ -22,6 +22,7 @@ if(!$center_list)
         '<td>'.$piece->email.'</td>'.
         '<td>'.$piece->phone.'</td>'.
         '<td>'.$piece->address.'</td>'.
+        '</tr>';
       }
      ?>
   </table>
