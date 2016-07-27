@@ -63,7 +63,7 @@ class WW_Module
     public static function ww_list_center()
     {
         if ($_GET['action'] == 'add_center') {
-            var_dump($_POST;
+            var_dump($_POST);
             //$name = $_POST("name");
             //$address = $_POST("address");
             //$email = $_POST("email");
