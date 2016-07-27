@@ -63,16 +63,20 @@ class WW_Module
     public static function ww_list_center()
     {
         if ($_GET['action'] == 'add_center') {
-            self::ww_add_center();
+            $name = $_POST('name');
+            $address = $_POST('address');
+            $email = $_POST('email');
+            $phone = $_POST('phone');
+            self::ww_add_center($name, $email, $address, $phone); 
         } else {
             include WW_Management_DIR.'views/add_center.php';
         }
     }
 
-    public static function ww_add_center()
+    public static function ww_add_center($name, $email, $address, $phone)
     {
         global $wpdb;
-        $input = array('name' => 'Stark', 'email' => 'winter@kings.com', 'phone' => '0232224455', 'address' => 'Winterfell');
+        $input = array('name' => $name, 'email' => $email, 'address' => $address, 'phone' => $phone);
         $wpdb->insert('wp_ww_center',
              array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
             array('%s', '%s', '%s', '%s')
