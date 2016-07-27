@@ -86,7 +86,7 @@ class WW_Module
              array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
             array('%s', '%s', '%s', '%s')
         );
-        include WW_Management_DIR.'views/list_center.php';
+        //include WW_Management_DIR.'views/list_center.php';
     }
 
     public static function ww_del_center()
