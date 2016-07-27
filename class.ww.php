@@ -63,6 +63,7 @@ class WW_Module
     public static function ww_list_center()
     {
         if ($_GET['action'] == 'add_center') {
+            include WW_Management_DIR.'views/add_center.php';
             //var_dump($_POST);
             $name = $_POST["name"];
             $address = $_POST["address"];
@@ -82,7 +83,7 @@ class WW_Module
              array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
             array('%s', '%s', '%s', '%s')
         );
-        self::ww_show_center();
+        //self::ww_show_center();
     }
 
     public static function ww_del_center()
