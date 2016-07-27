@@ -72,6 +72,7 @@ class WW_Module
         }
         if ($_GET['action'] == 'show_add') {
             include WW_Management_DIR.'views/add_center.php';
+        }
         else {
             include WW_Management_DIR.'views/list_center.php';
         }
