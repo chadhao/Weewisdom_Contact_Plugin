@@ -10,3 +10,7 @@
   <input type="submit" value="ADD">
 </form>
 
+<div>
+  <a href="<?php echo esc_url(WW_Module::ww_manage_get_url('add_center'));?>" >
+</div>
+

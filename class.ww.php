@@ -70,7 +70,7 @@ class WW_Module
             $phone = $_POST["phone"];
             self::ww_add_center($name, $email, $address, $phone); 
         } else {
-            self::ww_view("list_center");
+            //self::ww_view("list_center");
             
         }
     }
