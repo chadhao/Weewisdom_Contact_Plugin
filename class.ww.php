@@ -102,6 +102,7 @@ class WW_Module
         return $result;
     }
 
+    /*
     public static function ww_show_center()
     {
         $center_list = self::ww_get_center();
@@ -131,6 +132,7 @@ class WW_Module
         echo  '</table>';
         echo '</div>';
     }
+    */
 
     public static function ww_load_menu()
     {
