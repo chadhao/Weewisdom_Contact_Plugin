@@ -71,10 +71,10 @@ class WW_Module
             self::ww_add_center($name, $email, $address, $phone); 
         }
         if ($_GET['action'] == 'show_add') {
-            include WW_Management_DIR.'views/add_center.php';
+            self::ww_view('add_center');
         }
         else {
-            include WW_Management_DIR.'views/list_center.php';
+            self::ww_view('list_center');
         }
     }
 
