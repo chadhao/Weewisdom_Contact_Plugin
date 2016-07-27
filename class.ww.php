@@ -70,7 +70,8 @@ class WW_Module
             $phone = $_POST["phone"];
             self::ww_add_center($name, $email, $address, $phone); 
         } else {
-            self::ww_show_center();
+            self::ww_view("list_center");
+            
         }
     }
 
@@ -82,7 +83,7 @@ class WW_Module
              array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
             array('%s', '%s', '%s', '%s')
         );
-        self::ww_show_center();
+        //self::ww_show_center();
     }
 
     public static function ww_del_center()
