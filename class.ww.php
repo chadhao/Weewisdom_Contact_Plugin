@@ -68,9 +68,6 @@ class WW_Module
     public static function ww_center_manage()
     {
         //add center routings
-        if ($_GET['action'] == 'show_add') {
-            self::ww_view('add_center');
-        }
         if ($_GET['action'] == 'add_center') {
             //var_dump($_POST);
             $name = $_POST["name"];
@@ -78,6 +75,10 @@ class WW_Module
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             self::ww_add_center($name, $email, $address, $phone); 
+        }
+
+        if ($_GET['action'] == 'show_add') {
+            self::ww_view('add_center');
         }
 
         //del center routings
