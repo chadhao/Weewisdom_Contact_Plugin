@@ -67,6 +67,10 @@ class WW_Module
 
     public static function ww_center_manage()
     {
+        //add center routings
+        if ($_GET['action'] == 'show_add') {
+            self::ww_view('add_center');
+        }
         if ($_GET['action'] == 'add_center') {
             //var_dump($_POST);
             $name = $_POST["name"];
@@ -75,8 +79,16 @@ class WW_Module
             $phone = $_POST["phone"];
             self::ww_add_center($name, $email, $address, $phone); 
         }
-        if ($_GET['action'] == 'show_add') {
-            self::ww_view('add_center');
+
+        //del center routings
+        if ($_GET['action'] == "show_delete")
+        {
+            self::ww_view('del_center');
+        }
+        if ($_GET['action'] == "del_center")
+        {
+            $name = $_POST["name"];
+            self::ww_del_center($name);
         }
         else {
             self::ww_view('list_center');
@@ -93,10 +105,14 @@ class WW_Module
         );
     }
 
-    public static function ww_del_center()
+    public static function ww_del_center($name)
     {
         global $wpdb;
-        $wpdb->delete('wp_ww_center', array('center_id' => 1));
+        $result = $wpdb->get_results('SELECT center_id 
+                                      FROM wp_ww_enquiry
+                                      WHERE name = $name;');
+        var_dump($result);
+        //$wpdb->delete('wp_ww_center', array('center_id' => 1));
     }
 
     public static function ww_get_center()
@@ -132,6 +148,13 @@ class WW_Module
         if ($action == 'show_add') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
+        if ($action == 'show_delete') {
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+        if ($action == 'del_center') {
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+
         $url = add_query_arg($args, admin_url('admin.php'));
 
         return $url;
