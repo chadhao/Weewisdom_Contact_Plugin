@@ -108,6 +108,7 @@ class WW_Module
 
     public static function ww_del_center($name)
     {
+        global $wpdb;
         $result = $wpdb->get_results('SELECT center_id
                                       FROM wp_ww_center
                                       WHERE name = $name;');
