@@ -27,7 +27,7 @@ class WW_Module
             array('name' => 'Taku', 'phone' => '0112233445', 'center_id' => 1, 'is_contacted' => true),
             array('enq_id' => 1),
             array('%s', '%s', '%d', '%d')
-        );
+            );
     }
 
     public static function ww_add_enquiry()
@@ -36,7 +36,7 @@ class WW_Module
         $wpdb->insert('wp_ww_enquiry',
             array('name' => 'Pokemon', 'email' => 'pk@nintendo.com', 'phone' => '0223456789', 'center_id' => 2, 'is_contacted' => false),
             array('%s', '%s', '%s', '%d', '%d')
-        );
+            );
     }
 
     public static function ww_del_enquiry()
@@ -62,34 +62,37 @@ class WW_Module
             array('name' => 'good', 'phone' => '00000000000'),
             array('center_id' => 1),
             array('%s', '%s')
-        );
+            );
     }
 
     public static function ww_center_manage()
     {
         //add center routings
-        if ($_GET['action'] == "add_center") {
-            //var_dump($_POST);
-            $name = $_POST["name"];
-            $address = $_POST["address"];
-            $email = $_POST["email"];
-            $phone = $_POST["phone"];
-            self::ww_add_center($name, $email, $address, $phone); 
-        }
-
-        if ($_GET['action'] == "show_add") {
-            self::ww_view('add_center');
-        }
-
-        //del center routings
-        if ($_GET['action'] == "show_delete")
+        if($_GET['action'])
         {
-            self::ww_view('del_center');
-        }
-        if ($_GET['action'] == 'del_center')
-        {
-            $name = $_POST["name"];
-            self::ww_del_center($name);
+            if ($_GET['action'] == "add_center") {
+                //var_dump($_POST);
+                $name = $_POST["name"];
+                $address = $_POST["address"];
+                $email = $_POST["email"];
+                $phone = $_POST["phone"];
+                self::ww_add_center($name, $email, $address, $phone); 
+            }
+
+            if ($_GET['action'] == "show_add") {
+                self::ww_view('add_center');
+            }
+
+            //del center routings
+            if ($_GET['action'] == "show_delete")
+            {
+                self::ww_view('del_center');
+            }
+            if ($_GET['action'] == 'del_center')
+            {
+                $name = $_POST["name"];
+                self::ww_del_center($name);
+            }
         }
         else{
             self::ww_view('list_center');
@@ -101,32 +104,14 @@ class WW_Module
         global $wpdb;
         $input = array('name' => $name, 'email' => $email, 'address' => $address, 'phone' => $phone);
         $wpdb->insert('wp_ww_center',
-             array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
-             array('%s', '%s', '%s', '%s')
-        );
+           array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
+           array('%s', '%s', '%s', '%s')
+           );
     }
 
     public static function ww_del_center($name)
     {
-        global $wpdb;
-        //$result = $wpdb->get_row("SELECT center_id FROM wp_ww_center WHERE name = $name");
-        //var_dump($result);
-          
-
-
-        /*
-        $center_list = WW_Module::ww_get_center();
-        //var_dump($result);
-        $idToDel = 0;
-        foreach ($center_list as $piece)
-        {
-            if($piece->name == $name)
-            {
-                $idToDel = $piece->center_id;
-            }
-        }
-        var_dump($idToDel);
-        */   
+        global $wpdb; 
         $wpdb->delete('wp_ww_center', array('name' => $name));
     }
 
