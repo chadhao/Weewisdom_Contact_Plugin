@@ -28,7 +28,7 @@ else
     echo  '</table>';
   echo '</div>';
 }
-?>
+
 
 <div>
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
