@@ -82,7 +82,7 @@ class WW_Module
         }
 
         //del center routings
-        if ($_GET['action'] == 'show_delete')
+        if ($_GET['action'] == "show_delete")
         {
             self::ww_view('del_center');
         }
