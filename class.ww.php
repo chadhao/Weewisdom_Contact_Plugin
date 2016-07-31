@@ -90,7 +90,7 @@ class WW_Module
         {
             self::ww_del_center();
         }
-        if(!$_GET['action']){
+        else{
             self::ww_view('list_center');
         }
     }
