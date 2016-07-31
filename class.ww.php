@@ -107,6 +107,7 @@ class WW_Module
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s')
            );
+        self::ww_view('list_center');
     }
 
     public static function ww_del_center($name)
