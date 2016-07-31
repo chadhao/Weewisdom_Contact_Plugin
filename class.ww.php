@@ -111,7 +111,6 @@ class WW_Module
         $result = $wpdb->get_results('SELECT * 
                                       FROM wp_ww_center');
         var_dump($result);
-        $idToDel = 0;
         foreach ($center_list as $piece)
         {
             if($piece->name == $name)
