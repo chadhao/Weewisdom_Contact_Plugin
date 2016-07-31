@@ -118,7 +118,8 @@ class WW_Module
             {
                 $idToDel = $piece->center_id;
             }
-        }     
+        }
+        var_dump($idToDel);     
         $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
     }
 
