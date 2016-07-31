@@ -114,6 +114,7 @@ class WW_Module
     {
         global $wpdb; 
         $wpdb->delete('wp_ww_center', array('name' => $name));
+        self::ww_view('list_center');
     }
 
     public static function ww_get_center()
