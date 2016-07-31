@@ -89,9 +89,11 @@ class WW_Module
         {
             self::ww_del_center();
         }
+        /*
         else {
             self::ww_view('list_center');
         }
+        */
     }
 
     public static function ww_add_center($name, $email, $address, $phone)
