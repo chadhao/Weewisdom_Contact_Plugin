@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WW_Management
-Plugin URI: http://465.co.nz/
+Plugin URI: http://dev.465.co.nz/
 Description: This is the Activity plugin developed specially for Wee Wisdom.
 Version: 0.1
 Author: Arris, Rick, Teddy, Chad
