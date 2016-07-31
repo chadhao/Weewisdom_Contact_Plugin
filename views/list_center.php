@@ -29,7 +29,8 @@ else
   echo '</div>';
 }
 ?>
-<h1> <?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?> </h1>
+
+<div>
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
   <input type="submit" value="ADD NEW CENTER">
 </form>
@@ -37,4 +38,5 @@ else
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_delete'));?>">
   <input type="submit" value="DELETE CENTER">
 </form>
+</div>
 
