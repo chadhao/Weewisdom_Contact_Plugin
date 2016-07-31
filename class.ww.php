@@ -120,7 +120,7 @@ class WW_Module
             }
         }
         var_dump($idToDel);     
-        $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
+        $wpdb->delete('wp_ww_center', array('center_id' => (int)$idToDel));
     }
 
     public static function ww_get_center()
