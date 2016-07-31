@@ -91,7 +91,7 @@ class WW_Module
             $name = $_POST["name"];
             self::ww_del_center($name);
         }
-        if(!$_GET['action']){
+        else{
             self::ww_view('list_center');
         }
     }
