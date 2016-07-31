@@ -88,7 +88,8 @@ class WW_Module
         }
         if ($_GET['action'] == 'del_center')
         {
-            self::ww_del_center();
+            $name = $_POST["name"];
+            self::ww_del_center($name);
         }
         if(!$_GET['action']){
             self::ww_view('list_center');
@@ -107,12 +108,10 @@ class WW_Module
 
     public static function ww_del_center($name)
     {
-        global $wpdb;
-        $result = $wpdb->get_results('SELECT * 
-                                      FROM wp_ww_center');
+        $center_list = WW_Module::ww_get_center();
         //var_dump($result);
         $idToDel = 0;
-        foreach ($result as $piece)
+        foreach ($center_list as $piece)
         {
             if($piece->name == $name)
             {
