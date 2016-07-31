@@ -101,7 +101,7 @@ class WW_Module
         $input = array('name' => $name, 'email' => $email, 'address' => $address, 'phone' => $phone);
         $wpdb->insert('wp_ww_center',
              array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
-            array('%s', '%s', '%s', '%s')
+             array('%s', '%s', '%s', '%s')
         );
     }
 
@@ -109,8 +109,7 @@ class WW_Module
     {
         global $wpdb;
         $result = $wpdb->get_results('SELECT center_id 
-                                      FROM wp_ww_enquiry
-                                      WHERE name = $name;');
+                                      FROM wp_ww_enquiry');
         var_dump($result);
         //$wpdb->delete('wp_ww_center', array('center_id' => 1));
     }
