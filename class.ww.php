@@ -109,8 +109,7 @@ class WW_Module
     {
         global $wpdb;
         $result = $wpdb->get_results('SELECT center_id 
-                                      FROM wp_ww_center
-                                      WHERE name = $name');
+                                      FROM wp_ww_center');
         var_dump($result);
         //$wpdb->delete('wp_ww_center', array('center_id' => 1));
     }
