@@ -38,11 +38,11 @@ else
   echo '<div>';
     echo "<table>\n";
       echo  "<tr>\n".
-            '<td>center_id</td>'.
-            '<td>name</td>'.
-            '<td>email</td>'.
-            '<td>phone</td>'.
-            '<td>address</td>'.
+            '<td>ID</td>'.
+            '<td>NAME</td>'.
+            '<td>EMAIL</td>'.
+            '<td>PHONE</td>'.
+            '<td>ADDRESS</td>'.
             "</tr>\n";
 
       foreach ($center_list as $piece) 
