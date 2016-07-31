@@ -68,7 +68,7 @@ class WW_Module
     public static function ww_center_manage()
     {
         //add center routings
-        if ($_GET['action'] == 'add_center') {
+        if ($_GET['action'] == "add_center") {
             //var_dump($_POST);
             $name = $_POST["name"];
             $address = $_POST["address"];
@@ -77,7 +77,7 @@ class WW_Module
             self::ww_add_center($name, $email, $address, $phone); 
         }
 
-        if ($_GET['action'] == 'show_add') {
+        if ($_GET['action'] == "show_add") {
             self::ww_view('add_center');
         }
 
@@ -108,27 +108,10 @@ class WW_Module
 
     public static function ww_del_center($name)
     {
-        /*
-        $wpdb->query( 
-            $wpdb->prepare( 
-                "SELECT center_id
-                 FROM $wpdb->ww_center
-                 WHERE name = %s
-                 ",
-                $name
-                )
-            );
-            */
-
-        $wpdb->query( 
-            $wpdb->prepare( 
-                "
-                DELETE FROM $wpdb->ww_center
-                WHERE name = %s
-                ",
-                'Winterfall'
-                )
-            );
+        global $wpdb;
+        $result = $wpdb->get_row("SELECT center_id FROM wp_ww_center WHERE name = $name");
+        var_dump($result);
+          
 
 
         /*
