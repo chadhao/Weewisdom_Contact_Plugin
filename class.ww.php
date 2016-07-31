@@ -108,6 +108,7 @@ class WW_Module
 
     public static function ww_del_center($name)
     {
+        /*
         $wpdb->query( 
             $wpdb->prepare( 
                 "SELECT center_id
@@ -117,6 +118,7 @@ class WW_Module
                 $name
                 )
             );
+            */
 
         $wpdb->query( 
             $wpdb->prepare( 
@@ -124,7 +126,7 @@ class WW_Module
                 DELETE FROM $wpdb->ww_center
                 WHERE name = %s
                 ",
-                $name
+                'Winterfall'
                 )
             );
 
