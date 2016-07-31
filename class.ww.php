@@ -108,7 +108,7 @@ class WW_Module
 
     public static function ww_del_center($name)
     {
-        
+        /*
         $center_list = WW_Module::ww_get_center();
         //var_dump($result);
         $idToDel = 0;
@@ -119,8 +119,9 @@ class WW_Module
                 $idToDel = $piece->center_id;
             }
         }
-        var_dump($idToDel);     
-        $wpdb->delete('wp_ww_center', array('center_id' => (int)$idToDel));
+        var_dump($idToDel);
+        */   
+        $wpdb->delete('wp_ww_center', array('name' => $name));
     }
 
     public static function ww_get_center()
