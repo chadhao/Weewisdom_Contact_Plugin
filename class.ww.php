@@ -107,7 +107,7 @@ class WW_Module
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s'));
-        echo '<script>alert("!")</script>';
+        echo '<script>alert("'.self::ww_manage_get_url().'")</script>';
         header("location: ".self::ww_manage_get_url());
         exit();
            //self::ww_view('list_center');
