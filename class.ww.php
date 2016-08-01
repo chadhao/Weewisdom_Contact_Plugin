@@ -107,17 +107,18 @@ class WW_Module
     public static function ww_del_center($name)
     {
         global $wpdb; 
-        $wpdb->delete('wp_ww_center', array('name' => $name));
+        $idToDel = self::ww_get_center_id($name);
+        $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
         self::ww_view('list_center');
     }
 
     
-    public static function ww_get_center_id()
+    private static function ww_get_center_id($name)
     {
         global $wpdb;
-        $name = "rick";
+        //$name = "rick";
         $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = '".$name."'");
-        var_dump($id);
+        return $id;
     }
     
 
