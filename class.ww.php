@@ -76,7 +76,7 @@ class WW_Module
                 $address = $_POST["address"];
                 $email = $_POST["email"];
                 $phone = $_POST["phone"];
-                self::ww_get_center($name);
+                //self::ww_get_center($name);
                 self::ww_add_center($name, $email, $address, $phone); 
             }
 
@@ -151,10 +151,12 @@ class WW_Module
     */
     public static function ww_manage_get_url($action)
     {
+        /*
         if (!$action)
         {
             $args = array('page' => 'cen_action');           
         }
+        */
         if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
