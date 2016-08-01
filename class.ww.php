@@ -71,14 +71,6 @@ class WW_Module
         if($_GET['action'])
         {
             if ($_GET['action'] == "add_center") {
-                //var_dump($_POST);
-                /*
-                $name = $_POST["name"];
-                $address = $_POST["address"];
-                $email = $_POST["email"];
-                $phone = $_POST["phone"];
-                */
-                //self::ww_get_center($name);
                 self::ww_add_center(); 
             }
 
@@ -105,12 +97,6 @@ class WW_Module
     public static function ww_add_center()
     {
         global $wpdb;
-        /*
-        $name = $_POST["name"];
-        $address = $_POST["address"];
-        $email = $_POST["email"];
-        $phone = $_POST["phone"];
-        */
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'address' => $_POST["address"], 'phone' => $_POST["phone"]);
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
@@ -125,14 +111,15 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-    /*
-    public static function ww_get_center_id($name)
+    
+    public static function ww_get_center_id()
     {
         global $wpdb;
+        $name = "rick";
         $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = $name;");
         var_dump($id);
     }
-    */
+    
 
     public static function ww_get_center()
     {
@@ -147,7 +134,7 @@ class WW_Module
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_center_manage'), 'dashicons-smiley', 2);
         add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_center_manage'));
-        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_center_manage'));
+        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_get_center_id'));
     }
 
     /*
