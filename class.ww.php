@@ -130,7 +130,7 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-    public static function ww_process_del_center($center_id)
+    public static function ww_process_del_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'illegal request！');
@@ -144,7 +144,7 @@ class WW_Module
                 self::ww_display_message('error', 'failure delete！');
             }
         }
-        self::ww_view('list_center');    
+        self::ww_view('list_center');
     }
 
     private static function ww_get_center_id($name)
