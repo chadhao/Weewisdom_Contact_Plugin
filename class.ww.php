@@ -124,7 +124,7 @@ class WW_Module
     public static function ww_get_center()
     {
         global $wpdb;
-        $result = $wpdb->get_results('SELECT * FROM wp_ww_center;');
+        $result = $wpdb->get_results('SELECT * FROM wp_ww_center');
         return $result;
     }
 
