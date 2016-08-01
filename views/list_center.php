@@ -1,16 +1,14 @@
 <?php
 include 'style.php';
 $center_list = WW_Module::ww_get_center();
-?>
-<div class="wrap">
-<?php
+
 if (!$center_list) {
   echo 'Can not identify any center information!';
 }
 else
 {
-  echo '<div>';
-    echo "<table class="am-table am-table-hover">\n";
+  echo '<div class="wrap">';
+    echo '<table class="am-table am-table-hover">';
       echo  "<tr>\n".
             '<td>ID</td>'.
             '<td>NAME</td>'.
@@ -33,8 +31,6 @@ else
   echo '</div>';
 }
 ?>
-</div>
-
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
   <input type="submit" value="ADD NEW CENTER">
 </form>
