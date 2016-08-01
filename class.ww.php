@@ -71,7 +71,13 @@ class WW_Module
         if($_GET['action'])
         {
             if ($_GET['action'] == "add_center") {
-                self::ww_add_center(); 
+                //var_dump($_POST);
+                $name = $_POST["name"];
+                $address = $_POST["address"];
+                $email = $_POST["email"];
+                $phone = $_POST["phone"];
+                //self::ww_get_center($name);
+                self::ww_add_center($name, $email, $address, $phone); 
             }
 
             if ($_GET['action'] == "show_add") {
@@ -94,14 +100,14 @@ class WW_Module
         }
     }
 
-    public static function ww_add_center()
+    public static function ww_add_center($name, $email, $address, $phone)
     {
         global $wpdb;
-        //$input = array('name' => $_POST["name"];, 'email' => $_POST["email"], 'address' => $_POST["address"], 'phone' => $_POST["phone"]);
+        $input = array('name' => $name, 'email' => $email, 'address' => $address, 'phone' => $phone);
         $wpdb->insert('wp_ww_center',
-           array('name' => $_POST["name"];, 'email' => $_POST["email"], 'address' => $_POST["address"], 'phone' => $_POST["phone"])),
+           array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s'));
-        self::ww_view('list_center');
+           self::ww_view('list_center');
     }
 
     public static function ww_del_center($name)
