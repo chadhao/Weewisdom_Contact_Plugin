@@ -1,12 +1,16 @@
 <?php
+include 'style.php';
 $center_list = WW_Module::ww_get_center();
+?>
+<div class="wrap">
+<?php
 if (!$center_list) {
   echo 'Can not identify any center information!';
 }
 else
 {
   echo '<div>';
-    echo "<table>\n";
+    echo "<table class="am-table am-table-hover">\n";
       echo  "<tr>\n".
             '<td>ID</td>'.
             '<td>NAME</td>'.
@@ -15,7 +19,7 @@ else
             '<td>ADDRESS</td>'.
             "</tr>\n";
 
-      foreach ($center_list as $piece) 
+      foreach ($center_list as $piece)
       {
       echo '<tr>'.
             '<td>'.$piece->center_id.'</td>'.
@@ -29,6 +33,7 @@ else
   echo '</div>';
 }
 ?>
+</div>
 
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
   <input type="submit" value="ADD NEW CENTER">
@@ -38,7 +43,3 @@ else
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url("show_delete"));?>">
   <input type="submit" value="DELETE CENTER">
 </form>
-
-
-
-
