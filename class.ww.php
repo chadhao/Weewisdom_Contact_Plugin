@@ -116,7 +116,7 @@ class WW_Module
     {
         global $wpdb;
         $name = "rick";
-        $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = $name;");
+        $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = '".$name."'");
         var_dump($id);
     }
     
