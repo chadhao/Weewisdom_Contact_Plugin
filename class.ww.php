@@ -118,12 +118,14 @@ class WW_Module
         self::ww_view('list_center');
     }
 
+    /*
     public static function ww_get_center_id($name)
     {
         global $wpdb;
         $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = $name;");
         var_dump($id);
     }
+    */
 
     public static function ww_get_center()
     {
