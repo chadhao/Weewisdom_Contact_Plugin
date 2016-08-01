@@ -1,3 +1,4 @@
+<?php include 'style.php'; ?>
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('add_center'));?>">
   Title:<br>
   <input type="text" name="name"><br><br>
@@ -9,4 +10,3 @@
   <input type="text" name="phone"><br><br>
   <input type="submit" value="ADD">
 </form>
-
