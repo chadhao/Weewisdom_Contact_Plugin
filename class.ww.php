@@ -107,8 +107,8 @@ class WW_Module
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s'));
-           //header("location: ".self::ww_manage_get_url());
-           self::ww_view('list_center');
+           header("location: ".self::ww_manage_get_url());
+           //self::ww_view('list_center');
     }
 
     public static function ww_del_center($name)
@@ -153,12 +153,11 @@ class WW_Module
     */
     public static function ww_manage_get_url($action)
     {
-        /*
+        
         if (!$action)
         {
             $args = array('page' => 'cen_action');           
         }
-        */
         if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
