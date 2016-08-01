@@ -135,8 +135,8 @@ class WW_Module
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'illegal request！');
         } else {
-            $center_id = get_post(intval($_GET['center_id']));
-            if(!empty($center_id)){
+            $center_id = $_GET['center_id'];
+            if(!$center_id){
                 global $wpdb;
                 $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
                 self::ww_display_message('updated', 'successful delete！');
