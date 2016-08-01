@@ -26,7 +26,7 @@ else
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
             '<td>'.$piece->address.'</td>'.
-            '<td>DELETE</td>'.
+            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('del_center')).'>DELETE</a></td>'.
             '</tr>';
       }
     echo  '</table>';
