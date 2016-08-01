@@ -107,9 +107,7 @@ class WW_Module
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s'));
-        header("location: ".self::ww_manage_get_url());
-        exit();
-           //self::ww_view('list_center');
+        self::ww_view('list_center');
     }
 
     public static function ww_del_center($name)
