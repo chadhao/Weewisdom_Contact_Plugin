@@ -71,7 +71,7 @@ class WW_Module
         if($_GET['action'])
         {
             if ($_GET['action'] == "add_center") {
-                self::ww_add_center(); 
+                self::ww_add_center();
             }
 
             if ($_GET['action'] == "show_add") {
@@ -88,10 +88,28 @@ class WW_Module
                 $name = $_POST["name"];
                 self::ww_del_center($name);
             }
+            if ($_GET['action'] == 'process_del_center')
+            {
+                self::ww_process_del_center();
+            }
         }
         else{
             self::ww_view('list_center');
         }
+    }
+
+    public static function ww_message($type, $msg)
+    {
+        if ($type == 'error') {
+            echo '<div class="error"><p>'.$msg.'</p></div>';
+        } else {
+            echo '<div class="updated"><p>'.$msg.'</p></div>';
+        }
+    }
+    public static function ww_display_message($type, $msg)
+    {
+        add_action('admin_notice', array('WW_Module', 'ww_message'), 10, 2);
+        do_action('admin_notice', $type, $msg);
     }
 
     public static function ww_add_center()
@@ -106,13 +124,29 @@ class WW_Module
 
     public static function ww_del_center($name)
     {
-        global $wpdb; 
+        global $wpdb;
         $idToDel = self::ww_get_center_id($name);
         $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
         self::ww_view('list_center');
     }
 
-    
+    public static function ww_process_del_center($center_id)
+    {
+        if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
+            self::ww_display_message('error', 'illegal request！');
+        } else {
+            $center_id = get_post(intval($_GET['center_id']));
+            if(!empty($center_id)){
+                global $wpdb;
+                $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
+                self::ww_display_message('updated', 'successful delete！');
+            }else {
+                self::ww_display_message('error', 'failure delete！');
+            }
+        }
+        self::ww_view('list_center');    
+    }
+
     private static function ww_get_center_id($name)
     {
         global $wpdb;
@@ -120,7 +154,7 @@ class WW_Module
         $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = '".$name."'");
         return $id;
     }
-    
+
 
     public static function ww_get_center()
     {
@@ -146,12 +180,12 @@ class WW_Module
           }
     }
     */
-    public static function ww_manage_get_url($action)
+    public static function ww_manage_get_url($action, $center_id = 0)
     {
-        
+
         if (!$action)
         {
-            $args = array('page' => 'cen_action');           
+            $args = array('page' => 'cen_action');
         }
         if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
@@ -164,6 +198,9 @@ class WW_Module
         }
         if ($action == 'del_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+        if ($action == 'process_del_center') {
+            $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         $url = add_query_arg($args, admin_url('admin.php'));
