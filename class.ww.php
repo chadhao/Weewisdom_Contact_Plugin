@@ -106,7 +106,7 @@ class WW_Module
         $input = array('name' => $name, 'email' => $email, 'address' => $address, 'phone' => $phone);
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
-           array('%s', '%s', '%s', '%s')
+           array('%s', '%s', '%s', '%s'));
            //header("location: ".self::ww_manage_get_url());
            self::ww_view('list_center');
     }
