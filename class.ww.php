@@ -141,7 +141,6 @@ class WW_Module
                 $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
                 self::ww_display_message('updated', 'successful delete！');
             }else {
-                var_dump($center_id);
                 self::ww_display_message('error', 'failure delete！');
             }
         }
