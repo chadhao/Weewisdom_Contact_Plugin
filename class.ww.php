@@ -76,6 +76,7 @@ class WW_Module
                 $address = $_POST["address"];
                 $email = $_POST["email"];
                 $phone = $_POST["phone"];
+                self::ww_get_center($name);
                 self::ww_add_center($name, $email, $address, $phone); 
             }
 
@@ -106,8 +107,8 @@ class WW_Module
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s')
-           );
-        self::ww_view('list_center');
+           header("location: ".self::ww_manage_get_url());
+           //self::ww_view('list_center');
     }
 
     public static function ww_del_center($name)
@@ -115,6 +116,13 @@ class WW_Module
         global $wpdb; 
         $wpdb->delete('wp_ww_center', array('name' => $name));
         self::ww_view('list_center');
+    }
+
+    public static function ww_get_center_id($name)
+    {
+        global $wpdb;
+        $id = $wpdb->get_var( "SELECT center_id FROM wp_ww_center WHERE name = $name" );
+        var_dump($id);
     }
 
     public static function ww_get_center()
@@ -143,6 +151,10 @@ class WW_Module
     */
     public static function ww_manage_get_url($action)
     {
+        if (!$action)
+        {
+            $args = array('page' => 'cen_action');           
+        }
         if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
