@@ -131,7 +131,7 @@ class WW_Module
             $center_id = $_GET['center_id'];
             if($center_id)
             {
-                var_dump($center_id);
+                $_SESSION['id'] = $center_id;
             }
         }
         //self::ww_view('list_center');
