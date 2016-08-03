@@ -177,6 +177,7 @@ class WW_Module
             self::ww_clear_session();
             self::ww_display_message('error', 'Update Failed!');
         }
+        /*
         else
         {
             global $wpdb;
@@ -190,6 +191,7 @@ class WW_Module
             //self::ww_view('list_center');
         }
         //self::ww_view('list_center');
+        */
 
 
     }
@@ -202,7 +204,7 @@ class WW_Module
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_center_manage'), 'dashicons-smiley', 2);
         add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_center_manage'));
-        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_get_center_id'));
+        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_update_enquiry'));
     }
 
 
