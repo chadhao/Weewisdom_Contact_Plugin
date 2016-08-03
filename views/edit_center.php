@@ -11,19 +11,19 @@
     <div class="am-form-group">
       <label for="address" class="am-u-sm-1 am-form-label">Address</label>
       <div class="am-u-sm-11">
-          <input type="text" name="address">
+          <input type="text" name="address" value="<?php echo $_SESSION['address'];?>">
       </div>
     </div>
     <div class="am-form-group">
        <label for="email" class="am-u-sm-1 am-form-label">Email</label>
        <div class="am-u-sm-11">
-           <input type="text" name="email">
+           <input type="text" name="email" value="<?php echo $_SESSION['email'];?>">
        </div>
     </div>
     <div class="am-form-group">
        <label for="phone" class="am-u-sm-1 am-form-label">Phone</label>
        <div class="am-u-sm-11">
-           <input type="text" name="phone">
+           <input type="text" name="phone" value="<?php echo $_SESSION['phone'];?>">
        </div>
     </div>
 

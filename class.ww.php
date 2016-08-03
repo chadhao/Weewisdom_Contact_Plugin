@@ -6,16 +6,30 @@ class WW_Module
 
     public static function ww_activation()
     {
+        self::ww_clear_session();
         self::ww_init_database();
     }
 
     public static function ww_init()
     {
+        if(isset($_SESSION))
+        {
+            unset($_SESSION);
+        }
         add_action('admin_menu', array('WW_Module', 'ww_load_menu'));
     }
 
     public static function ww_deactivation()
     {
+        self::ww_clear_session();
+    }
+
+    public static function ww_clear_session()
+    {
+        if(isset($_SESSION))
+        {
+            unset($_SESSION);
+        }
     }
 
 
@@ -133,10 +147,11 @@ class WW_Module
             {
                 global $wpdb;
                 $result = $wpdb->get_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'");
-                var_dump($result);
-
                 $_SESSION['id'] = $center_id;
-                $_SESSION['name'] = "Good";
+                $_SESSION['name'] = $result->name;
+                $_SESSION['email'] = $result->email;
+                $_SESSION['phone'] = $result->phone;
+                $_SESSION['address'] = $result->address;
                 self::ww_view('edit_center');
             }
         }
