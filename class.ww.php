@@ -84,13 +84,11 @@ class WW_Module
             {
                 self::ww_view('del_center');
             }
-            /*
             if ($_GET['action'] == 'del_center')
             {
                 $name = $_POST["name"];
                 self::ww_del_center($name);
             }
-            */
             if ($_GET['action'] == 'process_del_center')
             {
                 self::ww_process_del_center();
@@ -112,8 +110,7 @@ class WW_Module
            array('%s', '%s', '%s', '%s'));
            self::ww_view('list_center');
     }
-
-    /*
+    
     public static function ww_del_center($name)
     {
         global $wpdb;
@@ -121,7 +118,6 @@ class WW_Module
         $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
         self::ww_view('list_center');
     }
-    */
 
     public static function ww_process_del_center()
     {
