@@ -179,6 +179,7 @@ class WW_Module
         }
         else
         {
+            global $wpdb;
             $wpdb->update('wp_ww_center',
             array('name' => $_POST['name'], 'phone' => $_POST['phone'], 'address' => $_POST['address'], 'email' = $_POST['email']),
             array('center_id' => $_GET['center_id']),
