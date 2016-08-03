@@ -3,11 +3,10 @@
 class WW_Module
 {
     const NONCE = 'ww_admin_key';
-    //private $update_id = 0;
 
     public static function ww_activation()
     {
-        //self::ww_clear_session();
+        self::ww_clear_session();
         self::ww_init_database();
     }
 
@@ -18,7 +17,7 @@ class WW_Module
 
     public static function ww_deactivation()
     {
-        //self::ww_clear_session();
+        self::ww_clear_session();
     }
 
     private static function ww_clear_session()
@@ -110,7 +109,7 @@ class WW_Module
     }
 
 
-    public static function ww_add_center()
+    private static function ww_add_center()
     {
         global $wpdb;
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'address' => $_POST["address"], 'phone' => $_POST["phone"]);
@@ -149,7 +148,6 @@ class WW_Module
             $center_id = $_GET['center_id'];
             if($center_id)
             {
-                //$this->$update_id = $center_id;
                 global $wpdb;
                 $result = $wpdb->get_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'");
                 $_SESSION['id'] = $center_id;
@@ -163,9 +161,9 @@ class WW_Module
     }
     
     
-    public static function ww_update_center()
+    private static function ww_update_center()
     {
-        var_dump($_SESSION['id']);
+        var_dump($_SESSION);
         if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
             ||!isset($_POST['address']))
         {
@@ -181,8 +179,8 @@ class WW_Module
             array('center_id' => $_GET['center_id']),
             array('%s', '%s', '%s', '%s')
             );
-            self::ww_display_message('update', 'Update Succeed!');
             self::ww_clear_session();
+            self::ww_display_message('update', 'Update Succeed!');       
         }
         self::ww_view('list_center');
         
