@@ -3,9 +3,8 @@ include 'style.php';
 $center_list = WW_Module::ww_get_center();
 
 if (!$center_list) {
-  echo '<div class="error"><p>No recorded center identified</p></div>';
-  //echo 'Can not identify any center information!';
-}
+  echo '<div class="error"><p>No recorded center identified!</p></div>';
+  //echo 'Can not identify any center information}
 else
 {
   echo '<div class="wrap">';
@@ -34,9 +33,12 @@ else
   echo '</div>';
 }
 ?>
-<form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
-  <input type="submit" value="ADD NEW CENTER">
-</form>
+<br/>
+<div>
+  <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
+    <input type="submit" value="ADD CENTER">
+  </form>
+</div>
 
 <!--
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url("show_delete"));?>">
