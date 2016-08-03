@@ -177,12 +177,12 @@ class WW_Module
             self::ww_clear_session();
             self::ww_display_message('error', 'Update Failed!');
         }
-        /*
+        
         else
         {
             global $wpdb;
             $wpdb->update('wp_ww_center',
-            array('name' => $_POST['name'], 'phone' => $_POST['phone'], 'address' => $_POST['address'], 'email' = $_POST['email']),
+            array('name' => $_POST['name'], 'phone' => $_POST['phone'], 'address' => $_POST['address'], 'email' => $_POST['email']),
             array('center_id' => $_GET['center_id']),
             array('%s', '%s', '%s', '%s')
             );
@@ -191,7 +191,7 @@ class WW_Module
             //self::ww_view('list_center');
         }
         //self::ww_view('list_center');
-        */
+        
 
 
     }
