@@ -112,7 +112,7 @@ class WW_Module
         return $result;
     }
 
-    private static function ww_add_center()
+    public static function ww_add_center()
     {
         global $wpdb;
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'address' => $_POST["address"], 'phone' => $_POST["phone"]);
@@ -122,7 +122,7 @@ class WW_Module
            self::ww_view('list_center');
     }
 
-    private static function ww_del_center()
+    public static function ww_del_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
@@ -160,10 +160,9 @@ class WW_Module
                 self::ww_view('edit_center');
             }
         }
-        //self::ww_view('list_center');
     }
 
-    private static function ww_update_center()
+    public static function ww_update_center()
     {
         if (!isset($_SESSION['id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
             ||!isset($_POST['address']))
@@ -284,7 +283,7 @@ class WW_Module
     }
 
     //view loading function
-    private static function ww_view($file_name)
+    public static function ww_view($file_name)
     {
         include WW_Management_DIR.'views/'.$file_name.'.php';
     }
