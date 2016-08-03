@@ -90,7 +90,12 @@ class WW_Module
         }
     }
 
-
+    public static function ww_get_center()
+    {
+        global $wpdb;
+        $result = $wpdb->get_results('SELECT * FROM wp_ww_center');
+        return $result;
+    }
 
     public static function ww_add_center()
     {
@@ -111,7 +116,7 @@ class WW_Module
             if($center_id){
                 global $wpdb;
                 $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
-                self::ww_display_message('updated', 'Successful Deleted!');
+                self::ww_display_message('updated', 'Deletion Succeed');
             }else {
                 self::ww_display_message('error', 'Deletion Failed!');
             }
@@ -119,12 +124,9 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-
-    public static function ww_get_center()
+    public static function ww_update_center()
     {
-        global $wpdb;
-        $result = $wpdb->get_results('SELECT * FROM wp_ww_center');
-        return $result;
+
     }
 
 
@@ -139,21 +141,27 @@ class WW_Module
 
     public static function ww_manage_get_url($action, $center_id = 0)
     {
-
+        //default menu page
         if (!$action)
         {
             $args = array('page' => 'cen_action');
         }
+
+        //add center pages
         if ($action == 'add_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
         if ($action == 'show_add') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        if ($action == 'show_delete') {
+
+        //delete center pages
+        if ($action == 'del_center') {
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        if ($action == 'del_center') {
+
+        //update center pages
+        if ($action == 'update_center') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
