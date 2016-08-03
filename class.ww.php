@@ -187,10 +187,9 @@ class WW_Module
             array('%s', '%s', '%s', '%s')
             );
             self::ww_display_message('update', 'Update Succeed!');
-            //self::ww_clear_session();
-            //self::ww_view('list_center');
+            self::ww_clear_session();
         }
-        //self::ww_view('list_center');
+        self::ww_view('list_center');
         
 
 
