@@ -65,7 +65,7 @@ class WW_Module
 
 
     //center action functions
-    private static function ww_center_manage()
+    public static function ww_center_manage()
     {       
         if($_GET['action'])
         {   
