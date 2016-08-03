@@ -4,7 +4,8 @@ $center_list = WW_Module::ww_get_center();
 
 if (!$center_list) {
   echo '<div class="error"><p>No recorded center identified!</p></div>';
-  //echo 'Can not identify any center information}
+  //echo 'Can not identify any center information!';
+}
 else
 {
   echo '<div class="wrap">';
@@ -33,9 +34,12 @@ else
   echo '</div>';
 }
 ?>
-
 <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
-  <input type="submit" value="ADD CENTER">
+  <input type="submit" value="ADD NEW CENTER">
 </form>
 
+<!--
+<form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url("show_delete"));?>">
+  <input type="submit" value="DELETE CENTER">
+</form>
 
