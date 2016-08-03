@@ -12,7 +12,7 @@ else
     echo '<table class="am-table am-table-hover">';
       echo  "<tr>\n".
             '<td>ID</td>'.
-            '<td>NAME</td>'.
+            '<td>CENTER</td>'.
             '<td>EMAIL</td>'.
             '<td>PHONE</td>'.
             '<td>ADDRESS</td>'.
