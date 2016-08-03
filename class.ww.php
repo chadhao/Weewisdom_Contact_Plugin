@@ -137,7 +137,7 @@ class WW_Module
     }
 
     
-    public static function ww_show_update()
+    private static function ww_show_update()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
@@ -289,7 +289,7 @@ class WW_Module
     }
 
     //view loading function
-    public static function ww_view($file_name)
+    private static function ww_view($file_name)
     {
         include WW_Management_DIR.'views/'.$file_name.'.php';
     }
