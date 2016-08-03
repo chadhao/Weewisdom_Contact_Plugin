@@ -179,24 +179,17 @@ class WW_Module
         }
         else
         {
-            var_dump($_GET);
-            var_dump($_POST);
-        }
-        /*
-        else
-        {
-            global $wpdb;
             $wpdb->update('wp_ww_center',
-            array('name' => $_POST['name'], 'phone' => $_POST['phone'], 'address'=>$_POST['address'], 'email' = $_POST['email']),
-            array('center_id' => $_SESSION['id']),
+            array('name' => $_POST['name'], 'phone' => $_POST['phone'], 'address' => $_POST['address'], 'email' = $_POST['email']),
+            array('center_id' => $_GET['center_id']),
             array('%s', '%s', '%s', '%s')
             );
             self::ww_display_message('update', 'Update Succeed!');
             //self::ww_clear_session();
-            self::ww_view('list_center');
+            //self::ww_view('list_center');
         }
-        self::ww_view('list_center');
-        */
+        //self::ww_view('list_center');
+
 
     }
     
