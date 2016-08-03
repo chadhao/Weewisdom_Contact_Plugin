@@ -2,9 +2,9 @@
 include 'style.php';
 $center_list = WW_Module::ww_get_center();
 
-if (!$center_list) {
+if (!$center_list) 
+{
   echo '<div class="error"><p>No recorded center identified!</p></div>';
-  //echo 'Can not identify any center information!';
 }
 else
 {
