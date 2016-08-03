@@ -112,7 +112,7 @@ class WW_Module
             if($center_id){
                 global $wpdb;
                 $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
-                self::ww_display_message('updated', 'Deletion Succeed');
+                self::ww_display_message('updated', 'Deletion Succeed!');
             }else {
                 self::ww_display_message('error', 'Deletion Failed!');
             }
