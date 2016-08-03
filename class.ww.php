@@ -130,7 +130,7 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-    /*
+    
     public static function ww_update_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
@@ -143,9 +143,9 @@ class WW_Module
                 self::ww_display_message('error', 'Deletion Failed!');
             }
         }
-        self::ww_view('list_center');
+        //self::ww_view('list_center');
     }
-    */
+    
 
 
     //initialize admin menu
