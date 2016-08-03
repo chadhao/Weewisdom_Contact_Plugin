@@ -93,7 +93,7 @@ class WW_Module
             */
             if ($_GET['action'] == 'del_center')
             {
-                self::ww_process_del_center();
+                self::ww_del_center();
             }
         }
         else{
@@ -123,7 +123,7 @@ class WW_Module
     }
     */
 
-    public static function del_center()
+    public static function ww_del_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'illegal request！');
