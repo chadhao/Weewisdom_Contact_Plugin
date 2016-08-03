@@ -131,6 +131,10 @@ class WW_Module
             $center_id = $_GET['center_id'];
             if($center_id)
             {
+                global $wpdb;
+                var_dump($wpdb->select_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'"));
+
+                $_SESSION['id'] = $center_id;
                 $_SESSION['name'] = "Good";
                 self::ww_view('edit_center');
             }
