@@ -27,7 +27,7 @@ else
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
             '<td>'.$piece->address.'</td>'.
-            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('update_center')).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_center', $piece -> center_id)).'>DELETE</a></td>'.
+            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('update_center', $piece -> center_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_center', $piece -> center_id)).'>DELETE</a></td>'.
             '</tr>';
       }
     echo  '</table>';
