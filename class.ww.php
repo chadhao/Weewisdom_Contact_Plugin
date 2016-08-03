@@ -130,7 +130,7 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-    
+    /*
     public static function ww_update_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
@@ -145,7 +145,7 @@ class WW_Module
         }
         self::ww_view('list_center');
     }
-    
+    */
 
 
     //initialize admin menu
@@ -179,10 +179,11 @@ class WW_Module
         }
 
         //update center pages
+        /*
         if ($action == 'update_center') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        
+        */
 
         $url = add_query_arg($args, admin_url('admin.php'));
 
