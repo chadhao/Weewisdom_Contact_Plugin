@@ -113,6 +113,7 @@ class WW_Module
         return $result;
     }
 
+
     public static function ww_add_center()
     {
         global $wpdb;
@@ -122,6 +123,7 @@ class WW_Module
            array('%s', '%s', '%s', '%s'));
            self::ww_view('list_center');
     }
+
 
     public static function ww_del_center()
     {
@@ -168,11 +170,16 @@ class WW_Module
     {
         //var_dump($_POST);
         //var_dump($this->update_id);
-        if (!isset($_SESSION['id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
+        if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
             ||!isset($_POST['address']))
         {
             self::ww_clear_session();
             self::ww_display_message('error', 'Update Failed!');
+        }
+        else
+        {
+            var_dump($_GET);
+            var_dump($_POST);
         }
         /*
         else
@@ -231,7 +238,7 @@ class WW_Module
         }
 
         if ($action == 'update_center') {
-            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
         
 
