@@ -1,4 +1,4 @@
-<?php include 'style.php'; ?>
+<?php include 'style.php'; $_SESSION['name'] = "Kia Ora"?>
 <div class="wrap">
   <form class="am-form am-form-horizontal" method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('add_center'));?>">
     <fieldset>
