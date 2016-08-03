@@ -125,12 +125,13 @@ class WW_Module
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
-        } else {
+        } 
+        else 
+        {
             $center_id = $_GET['center_id'];
-            if($center_id){
+            if($center_id)
+            {
                 var_dump($center_id);
-            }else {
-                self::ww_display_message('error', 'Deletion Failed!');
             }
         }
         //self::ww_view('list_center');
@@ -170,11 +171,11 @@ class WW_Module
         }
 
         //update center pages
-        /*
+        
         if ($action == 'update_center') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        */
+        
 
         $url = add_query_arg($args, admin_url('admin.php'));
 
