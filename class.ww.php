@@ -161,7 +161,7 @@ class WW_Module
             }
         }
     }
-    /*
+    
     public static function ww_update_center()
     {
         if (!isset($_SESSION['id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
@@ -179,12 +179,13 @@ class WW_Module
             array('%s', '%s', '%s', '%s')
             );
             self::ww_display_message('update', 'Update Succeed!');
-            self::ww_clear_session();
+            //self::ww_clear_session();
             self::ww_view('list_center');
         }
+        self::ww_view('list_center');
 
     }
-    */
+    
 
 
     //initialize admin menu
