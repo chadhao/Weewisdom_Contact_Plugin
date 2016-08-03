@@ -132,7 +132,8 @@ class WW_Module
             if($center_id)
             {
                 global $wpdb;
-                var_dump($wpdb->select_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'"));
+                $result = $wpdb->get_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'");
+                var_dump($result);
 
                 $_SESSION['id'] = $center_id;
                 $_SESSION['name'] = "Good";
