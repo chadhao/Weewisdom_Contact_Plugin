@@ -65,9 +65,8 @@ class WW_Module
 
 
     //center action functions
-    public static function ww_center_manage()
-    {
-        
+    private static function ww_center_manage()
+    {       
         if($_GET['action'])
         {   
             //add center routings
@@ -163,11 +162,10 @@ class WW_Module
     
     private static function ww_update_center()
     {
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
         if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
             ||!isset($_POST['address']))
         {
-            self::ww_clear_session();
             self::ww_display_message('error', 'Update Failed!');
         }
         
@@ -179,7 +177,6 @@ class WW_Module
             array('center_id' => $_GET['center_id']),
             array('%s', '%s', '%s', '%s')
             );
-            self::ww_clear_session();
             self::ww_display_message('update', 'Update Succeed!');       
         }
         self::ww_view('list_center');
