@@ -1,10 +1,10 @@
 <?php
 include 'style.php';
-$center_list = WW_Module::ww_get_center();
+$enquiry_list = WW_Module::ww_show_enquiry();
 
-if (!$center_list)
+if (!$enquiry_list)
 {
-  echo '<div class="error"><p>No recorded center identified!</p></div>';
+  echo '<div class="error"><p>No recorded enquiry identified!</p></div>';
 }
 else
 {
@@ -12,21 +12,23 @@ else
     echo '<table class="am-table am-table-hover">';
       echo  "<tr>\n".
             '<td>ID</td>'.
-            '<td>CENTER</td>'.
+            '<td>NAME</td>'.
             '<td>EMAIL</td>'.
             '<td>PHONE</td>'.
-            '<td>ADDRESS</td>'.
+            '<td>CENTER_ID</td>'.
+            '<td>IS_CONTACTED</td>'.
             "</tr>\n";
       $ID = 1;
-      foreach ($center_list as $piece)
+      foreach ($enquiry_list as $piece)
       {
              echo '<tr>'.
             '<td>'.$ID++.'</td>'.
-            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('list_enquiry', $piece -> center_id)).'>'.$piece->name.'</a></td>'.
+            '<td>'.$piece->name.'</a></td>'.
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
-            '<td>'.$piece->address.'</td>'.
-            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update', $piece -> center_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_center', $piece -> center_id)).'>DELETE</a></td>'.
+            '<td>'.$piece->center_id.'</td>'.
+            '<td>'.$piece->is_contacted.'</td>'.
+//            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update', $piece -> center_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_center', $piece -> center_id)).'>DELETE</a></td>'.
             '</tr>';
       }
     echo  '</table>';

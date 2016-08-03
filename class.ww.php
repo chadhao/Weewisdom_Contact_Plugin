@@ -62,13 +62,25 @@ class WW_Module
         var_dump($result);
     }
 
-
-
+    private static function ww_show_enquiry()
+    {
+        if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
+            self::ww_display_message('error', 'Illegal request！');
+        }else{
+            $center_id = $_GET['center_id'];
+            if($center_id)
+            {
+                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiryr WHERE center_id = '".$center_id."'");
+                return $result;
+            }
+        }
+    }
+    
     //center action functions
     public static function ww_center_manage()
-    {       
+    {
         if($_GET['action'])
-        {   
+        {
             //add center routings
             if ($_GET['action'] == "add_center") {
                 self::ww_add_center();
@@ -94,6 +106,15 @@ class WW_Module
             {
                 self::ww_update_center();
             }
+
+
+
+            if ($_GET['action'] == "list_enquiry") {
+                self::ww_show_enquiry();
+                self::ww_view('list_enquiry');
+            }
+
+
         }
         else{
             self::ww_view('list_center');
@@ -136,13 +157,13 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-    
+
     private static function ww_show_update()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
-        } 
-        else 
+        }
+        else
         {
             $center_id = $_GET['center_id'];
             if($center_id)
@@ -158,8 +179,7 @@ class WW_Module
             }
         }
     }
-    
-    
+
     private static function ww_update_center()
     {
         //var_dump($_SESSION);
@@ -168,7 +188,7 @@ class WW_Module
         {
             self::ww_display_message('error', 'Update Failed!');
         }
-        
+
         else
         {
             global $wpdb;
@@ -177,15 +197,10 @@ class WW_Module
             array('center_id' => $_GET['center_id']),
             array('%s', '%s', '%s', '%s')
             );
-            self::ww_display_message('update', 'Update Succeed!');       
+            self::ww_display_message('update', 'Update Succeed!');
         }
         self::ww_view('list_center');
-        
-
-
     }
-    
-    
 
 
     //initialize admin menu
@@ -226,7 +241,11 @@ class WW_Module
         if ($action == 'update_center') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        
+
+
+        if ($action == 'list_enquiry') {
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
 
         $url = add_query_arg($args, admin_url('admin.php'));
 
@@ -281,7 +300,7 @@ class WW_Module
             echo '<div class="updated"><p>'.$msg.'</p></div>';
         }
     }
-    
+
     public static function ww_display_message($type, $msg)
     {
         add_action('admin_notice', array('WW_Module', 'ww_message'), 10, 2);
@@ -322,5 +341,5 @@ class WW_Module
     }
     */
 
-    
+
 }
