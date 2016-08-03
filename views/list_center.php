@@ -3,7 +3,8 @@ include 'style.php';
 $center_list = WW_Module::ww_get_center();
 
 if (!$center_list) {
-  echo 'Can not identify any center information!';
+  echo '<div class="error"><p>Can not identify any center information!</p></div>';
+  //echo 'Can not identify any center information!';
 }
 else
 {

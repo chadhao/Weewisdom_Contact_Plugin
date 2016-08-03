@@ -139,9 +139,9 @@ class WW_Module
             if($center_id){
                 global $wpdb;
                 $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
-                self::ww_display_message('updated', 'successful delete！');
+                self::ww_display_message('updated', 'Successful Deleted!');
             }else {
-                self::ww_display_message('error', 'failure delete！');
+                self::ww_display_message('error', 'Deletion Failed!');
             }
         }
         self::ww_view('list_center');
@@ -150,7 +150,6 @@ class WW_Module
     private static function ww_get_center_id($name)
     {
         global $wpdb;
-        //$name = "rick";
         $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = '".$name."'");
         return $id;
     }
@@ -172,14 +171,7 @@ class WW_Module
         add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_get_center_id'));
     }
 
-    /*
-    public static function ww_manage_page()
-    {
-          if ($_POST['add_center']) {
-                self::ww_add_center();
-          }
-    }
-    */
+
     public static function ww_manage_get_url($action, $center_id = 0)
     {
 
