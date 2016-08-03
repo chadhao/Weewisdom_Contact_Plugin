@@ -220,6 +220,10 @@ class WW_Module
         if ($action == 'show_update') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
+
+        if ($action == 'update_center') {
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
         
 
         $url = add_query_arg($args, admin_url('admin.php'));
