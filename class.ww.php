@@ -80,17 +80,6 @@ class WW_Module
             }
 
             //del center routings
-            /*
-            if ($_GET['action'] == "show_delete")
-            {
-                self::ww_view('del_center');
-            }          
-            if ($_GET['action'] == 'del_center')
-            {
-                $name = $_POST["name"];
-                self::ww_del_center($name);
-            }
-            */
             if ($_GET['action'] == 'del_center')
             {
                 self::ww_del_center();
@@ -113,16 +102,6 @@ class WW_Module
            self::ww_view('list_center');
     }
 
-    /*
-    public static function ww_del_center($name)
-    {
-        global $wpdb;
-        $idToDel = self::ww_get_center_id($name);
-        $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
-        self::ww_view('list_center');
-    }
-    */
-
     public static function ww_del_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
@@ -138,13 +117,6 @@ class WW_Module
             }
         }
         self::ww_view('list_center');
-    }
-
-    private static function ww_get_center_id($name)
-    {
-        global $wpdb;
-        $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = '".$name."'");
-        return $id;
     }
 
 
@@ -261,6 +233,23 @@ class WW_Module
     public static function ww_uninstall()
     {
     }
+
+    /*
+    public static function ww_del_center($name)
+    {
+        global $wpdb;
+        $idToDel = self::ww_get_center_id($name);
+        $wpdb->delete('wp_ww_center', array('center_id' => $idToDel));
+        self::ww_view('list_center');
+    }
+
+    private static function ww_get_center_id($name)
+    {
+        global $wpdb;
+        $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE name = '".$name."'");
+        return $id;
+    }
+    */
 
     
 }
