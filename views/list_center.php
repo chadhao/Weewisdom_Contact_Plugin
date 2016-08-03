@@ -33,7 +33,7 @@ else
   echo '</div>';
 }
 ?>
-<br/>
+<p><br></p>
 <div>
   <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
     <input type="submit" value="ADD CENTER">
