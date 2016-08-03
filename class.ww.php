@@ -139,7 +139,7 @@ class WW_Module
     }
 
 
-    public static function ww_manage_get_url($action, $center_id)
+    public static function ww_manage_get_url($action, $center_id = 0)
     {
         //default menu page
         if (!$action)
@@ -161,9 +161,11 @@ class WW_Module
         }
 
         //update center pages
+        /*
         if ($action == 'update_center') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
+        */
 
         $url = add_query_arg($args, admin_url('admin.php'));
 
