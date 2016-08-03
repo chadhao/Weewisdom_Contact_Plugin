@@ -67,9 +67,10 @@ class WW_Module
 
     public static function ww_center_manage()
     {
-        //add center routings
+        
         if($_GET['action'])
-        {
+        {   
+            //add center routings
             if ($_GET['action'] == "add_center") {
                 self::ww_add_center();
             }
@@ -98,19 +99,7 @@ class WW_Module
         }
     }
 
-    public static function ww_message($type, $msg)
-    {
-        if ($type == 'error') {
-            echo '<div class="error"><p>'.$msg.'</p></div>';
-        } else {
-            echo '<div class="updated"><p>'.$msg.'</p></div>';
-        }
-    }
-    public static function ww_display_message($type, $msg)
-    {
-        add_action('admin_notice', array('WW_Module', 'ww_message'), 10, 2);
-        do_action('admin_notice', $type, $msg);
-    }
+
 
     public static function ww_add_center()
     {
@@ -172,7 +161,7 @@ class WW_Module
     }
 
 
-    public static function ww_manage_get_url($action, $center_id = 0)
+    public static function ww_manage_get_url($action)
     {
 
         if (!$action)
@@ -192,7 +181,7 @@ class WW_Module
             $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
         if ($action == 'process_del_center') {
-            $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'cen_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         $url = add_query_arg($args, admin_url('admin.php'));
@@ -239,6 +228,28 @@ class WW_Module
         dbDelta($ww_enquiry_sql);
     }
 
+    //instruction display functions
+    public static function ww_message($type, $msg)
+    {
+        if ($type == 'error') {
+            echo '<div class="error"><p>'.$msg.'</p></div>';
+        } else {
+            echo '<div class="updated"><p>'.$msg.'</p></div>';
+        }
+    }
+    
+    public static function ww_display_message($type, $msg)
+    {
+        add_action('admin_notice', array('WW_Module', 'ww_message'), 10, 2);
+        do_action('admin_notice', $type, $msg);
+    }
+
+    //view loading functions
+    public static function ww_view($file_name)
+    {
+        include WW_Management_DIR.'views/'.$file_name.'.php';
+    }
+
     /**
      * Initialize wordpress hooks.
      */
@@ -250,8 +261,5 @@ class WW_Module
     {
     }
 
-    public static function ww_view($file_name)
-    {
-        include WW_Management_DIR.'views/'.$file_name.'.php';
-    }
+    
 }
