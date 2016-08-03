@@ -20,8 +20,7 @@ else
       $ID = 1;
       foreach ($center_list as $piece)
       {
-
-      echo '<tr>'.
+             echo '<tr>'.
             '<td>'.$ID++.'</td>'.
             '<td>'.$piece->name.'</td>'.
             '<td>'.$piece->email.'</td>'.
