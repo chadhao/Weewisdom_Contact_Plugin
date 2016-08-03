@@ -5,7 +5,7 @@
     <div class="am-form-group">
        <label for="name" class="am-u-sm-1 am-form-label">Name</label>
        <div class="am-u-sm-11">
-           <input type="text" name="name" value="<?php var_dump($_SESSION);?>" placeholder="add name">
+           <input type="text" name="name" value="<?php echo $_SESSION['name'];?>" placeholder="add name">
        </div>
     </div>
     <div class="am-form-group">
