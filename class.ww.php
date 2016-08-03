@@ -116,7 +116,7 @@ class WW_Module
     public static function ww_del_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
-            self::ww_display_message('error', 'illegal request！');
+            self::ww_display_message('error', 'Illegal request！');
         } else {
             $center_id = $_GET['center_id'];
             if($center_id){
@@ -134,13 +134,11 @@ class WW_Module
     public static function ww_update_center()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
-            self::ww_display_message('error', 'illegal request！');
+            self::ww_display_message('error', 'Illegal request！');
         } else {
             $center_id = $_GET['center_id'];
             if($center_id){
-                global $wpdb;
-                $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
-                self::ww_display_message('updated', 'Deletion Succeed');
+                var_dump($center_id);
             }else {
                 self::ww_display_message('error', 'Deletion Failed!');
             }
