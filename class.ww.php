@@ -165,7 +165,8 @@ class WW_Module
     
     public static function ww_update_center()
     {
-        var_dump($_POST);
+        //var_dump($_POST);
+        var_dump($_SESSION['id']);
         if (!isset($_SESSION['id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
             ||!isset($_POST['address']))
         {
