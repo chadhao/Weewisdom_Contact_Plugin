@@ -3,7 +3,7 @@
 class WW_Module
 {
     const NONCE = 'ww_admin_key';
-    private $update_id = 0;
+    //private $update_id = 0;
 
     public static function ww_activation()
     {
@@ -151,7 +151,7 @@ class WW_Module
             $center_id = $_GET['center_id'];
             if($center_id)
             {
-                $this->$update_id = $center_id;
+                //$this->$update_id = $center_id;
                 global $wpdb;
                 $result = $wpdb->get_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'");
                 $_SESSION['name'] = $result->name;
@@ -167,7 +167,7 @@ class WW_Module
     public static function ww_update_center()
     {
         //var_dump($_POST);
-        var_dump($this->update_id);
+        //var_dump($this->update_id);
         if (!isset($_SESSION['id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
             ||!isset($_POST['address']))
         {
