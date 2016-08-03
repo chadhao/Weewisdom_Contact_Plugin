@@ -84,6 +84,12 @@ class WW_Module
             {
                 self::ww_del_center();
             }
+
+            //update center routings
+            if($_GET['action'] == 'update_center')
+            {
+                self::ww_update_center();
+            }
         }
         else{
             self::ww_view('list_center');
@@ -124,12 +130,24 @@ class WW_Module
         self::ww_view('list_center');
     }
 
-    /*
+    
     public static function ww_update_center()
     {
-
+        if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
+            self::ww_display_message('error', 'illegal request！');
+        } else {
+            $center_id = $_GET['center_id'];
+            if($center_id){
+                global $wpdb;
+                $wpdb->delete('wp_ww_center', array('center_id' => $center_id));
+                self::ww_display_message('updated', 'Deletion Succeed');
+            }else {
+                self::ww_display_message('error', 'Deletion Failed!');
+            }
+        }
+        self::ww_view('list_center');
     }
-    */
+    
 
 
     //initialize admin menu
@@ -141,7 +159,7 @@ class WW_Module
     }
 
 
-    public static function ww_manage_get_url($action, $center_id = 0)
+    public static function ww_manage_get_url($action, $center_id)
     {
         //default menu page
         if (!$action)
@@ -163,11 +181,10 @@ class WW_Module
         }
 
         //update center pages
-        /*
         if ($action == 'update_center') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-        */
+        
 
         $url = add_query_arg($args, admin_url('admin.php'));
 
