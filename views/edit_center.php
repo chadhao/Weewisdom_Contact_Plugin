@@ -1,4 +1,4 @@
-<?php include 'style.php'; var_dump($_SESSION['id'])?>
+<?php include 'style.php';?>
 <div class="wrap">
   <form class="am-form am-form-horizontal" method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('update_center'));?>">
     <fieldset>
