@@ -124,10 +124,12 @@ class WW_Module
         self::ww_view('list_center');
     }
 
+    /*
     public static function ww_update_center()
     {
 
     }
+    */
 
 
     //initialize admin menu
