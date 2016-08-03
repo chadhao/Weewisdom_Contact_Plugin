@@ -156,6 +156,7 @@ class WW_Module
                 //$this->$update_id = $center_id;
                 global $wpdb;
                 $result = $wpdb->get_row("SELECT * FROM wp_ww_center WHERE center_id = '".$center_id."'");
+                $_SESSION['id'] = $center_id;
                 $_SESSION['name'] = $result->name;
                 $_SESSION['email'] = $result->email;
                 $_SESSION['phone'] = $result->phone;
