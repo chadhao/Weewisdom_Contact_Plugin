@@ -38,8 +38,4 @@ else
   <input type="submit" value="ADD NEW CENTER">
 </form>
 
-<!--
-<form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url("show_delete"));?>">
-  <input type="submit" value="DELETE CENTER">
-</form>
 
