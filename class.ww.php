@@ -90,9 +90,9 @@ class WW_Module
             }
 
             //update center routings
-            if($_GET['action'] == 'update_center')
+            if($_GET['action'] == 'show_update')
             {
-                self::ww_update_center();
+                self::ww_show_update();
             }
         }
         else{
@@ -135,7 +135,7 @@ class WW_Module
     }
 
     
-    public static function ww_update_center()
+    public static function ww_show_update()
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
@@ -193,7 +193,7 @@ class WW_Module
 
         //update center pages
         
-        if ($action == 'update_center') {
+        if ($action == 'show_update') {
             $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
         
