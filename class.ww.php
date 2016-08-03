@@ -55,16 +55,6 @@ class WW_Module
 
 
     //center action functions
-    public static function ww_update_center()
-    {
-        global $wpdb;
-        $wpdb->update('wp_ww_center',
-            array('name' => 'good', 'phone' => '00000000000'),
-            array('center_id' => 1),
-            array('%s', '%s')
-            );
-    }
-
     public static function ww_center_manage()
     {
         
