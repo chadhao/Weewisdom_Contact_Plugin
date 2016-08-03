@@ -2,7 +2,7 @@
 include 'style.php';
 $center_list = WW_Module::ww_get_center();
 
-if (!$center_list) 
+if (!$center_list)
 {
   echo '<div class="error"><p>No recorded center identified!</p></div>';
 }
@@ -22,7 +22,7 @@ else
       {
              echo '<tr>'.
             '<td>'.$ID++.'</td>'.
-            '<td>'.$piece->name.'</td>'.
+            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update', $piece -> center_id)).'>'.$piece->name.'</a></td>'.
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
             '<td>'.$piece->address.'</td>'.
@@ -39,5 +39,3 @@ else
     <input type="submit" value="ADD NEW CENTER">
   </form>
 </div>
-
-
