@@ -24,7 +24,7 @@ class WW_Module
         self::ww_clear_session();
     }
 
-    public static function ww_clear_session()
+    private static function ww_clear_session()
     {
         if(isset($_SESSION))
         {
@@ -94,6 +94,11 @@ class WW_Module
             {
                 self::ww_show_update();
             }
+
+            if($_GET['action'] == 'update_center')
+            {
+                self::ww_update_center();
+            }
         }
         else{
             self::ww_view('list_center');
@@ -160,12 +165,26 @@ class WW_Module
 
     private static function ww_update_center()
     {
-
+        if (!isset($_SESSION['id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
+            ||!isset($_POST['address']))
+        {
+            self::ww_clear_session();
+            self::ww_display_message('error', 'Update Failed!');
+        }
+        else
+        {
+            global $wpdb;
+            $wpdb->update('wp_ww_center',
+            array('name' => $_POST['name'], 'phone' => $_POST['phone'], 'address'=>$_POST['address'], 'email' = $_POST['email']),
+            array('center_id' => $_SESSION['id']),
+            array('%s', '%s', '%s', '%s')
+            );
+            self::ww_display_message('update', 'Update Succeed!');
+            self::ww_clear_session();
+            self::ww_view('list_center');
+        }
 
     }
-
-    
-    
 
 
     //initialize admin menu
@@ -265,7 +284,7 @@ class WW_Module
     }
 
     //view loading function
-    public static function ww_view($file_name)
+    private static function ww_view($file_name)
     {
         include WW_Management_DIR.'views/'.$file_name.'.php';
     }

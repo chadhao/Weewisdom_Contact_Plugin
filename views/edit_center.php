@@ -1,6 +1,6 @@
 <?php include 'style.php';?>
 <div class="wrap">
-  <form class="am-form am-form-horizontal" method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('add_center'));?>">
+  <form class="am-form am-form-horizontal" method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('update_center'));?>">
     <fieldset>
     <div class="am-form-group">
        <label for="name" class="am-u-sm-1 am-form-label">Name</label>
