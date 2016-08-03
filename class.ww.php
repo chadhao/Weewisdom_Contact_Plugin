@@ -132,6 +132,7 @@ class WW_Module
             if($center_id)
             {
                 $_SESSION['name'] = "Good";
+                self::ww_view('edit_center');
             }
         }
         //self::ww_view('list_center');
