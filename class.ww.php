@@ -71,7 +71,7 @@ class WW_Module
             if($center_id)
             {
                 $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry WHERE center_id = '".$center_id."'");
-                var_dump($result);
+                return $result;
             }
         }
     }
@@ -111,7 +111,7 @@ class WW_Module
 
             if ($_GET['action'] == "list_enquiry") {
                 self::ww_show_enquiry();
-//                self::ww_view('list_enquiry');
+                self::ww_view('list_enquiry');
             }
 
 
