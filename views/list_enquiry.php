@@ -2,8 +2,6 @@
 include 'style.php';
 $enquiry_list = WW_Module::ww_show_enquiry();
 
-echo '<h1>'.$enquiry_list.'</h1>';
-
 if (!$enquiry_list)
 {
   echo '<div class="error"><p>No recorded enquiry identified!</p></div>';
@@ -39,7 +37,7 @@ else
 ?>
 <div>
   <br>
-  <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add'));?>">
-    <input type="submit" value="ADD NEW CENTER">
+  <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add_enquiry', $piece -> center_id));?>">
+    <input type="submit" value="ADD NEW ENQUIRY">
   </form>
 </div>

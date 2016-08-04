@@ -43,10 +43,11 @@ class WW_Module
     public static function ww_add_enquiry()
     {
         global $wpdb;
+        $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"], 'center_id' => $_GET["center_id"], 'is_contacted' => $_POST["is_contacted"]);
         $wpdb->insert('wp_ww_enquiry',
-            array('name' => 'Pokemon', 'email' => 'pk@nintendo.com', 'phone' => '0223456789', 'center_id' => 24, 'is_contacted' => false),
-            array('%s', '%s', '%s', '%d', '%d')
-            );
+        array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted']),
+        array('%s', '%s', '%s', '%s', '%d'));
+        self::ww_view('list_enquiry');
     }
 
     public static function ww_del_enquiry()
@@ -113,7 +114,12 @@ class WW_Module
             if ($_GET['action'] == "list_enquiry") {
                 self::ww_view('list_enquiry');
             }
-
+            if ($_GET['action'] == "show_add_enquiry") {
+                self::ww_view('add_enquiry');
+            }
+            if ($_GET['action'] == "add_enquiry") {
+                self::ww_add_enquiry();
+            }
 
         }
         else{
@@ -242,6 +248,10 @@ class WW_Module
 
 
         if ($action == 'list_enquiry') {
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+
+        if ($action == 'add_enquiry') {
             $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
