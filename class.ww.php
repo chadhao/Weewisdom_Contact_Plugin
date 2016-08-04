@@ -68,11 +68,9 @@ class WW_Module
             self::ww_display_message('error', 'Illegal request！');
         }else{
             $center_id = $_GET['center_id'];
-            return $center_id;
-
             if($center_id)
             {
-                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry WHERE center_id = '".$center_id."'");
+                $result = $wpdb->get_results('SELECT * FROM wp_ww_enquiry WHERE center_id = $center_id');
                 return $result;
             }
         }
