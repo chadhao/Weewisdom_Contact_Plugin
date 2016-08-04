@@ -20,12 +20,9 @@
            <input type="text" name="phone" placeholder="add phone">
        </div>
     </div>
-    <div class="am-form-group">
-       <label type="hidden" for="center_id" class="am-u-sm-1 am-form-label">Center_ID</label>
-       <div class="am-u-sm-11">
-           <input type="hidden" name="center_id" value="<?php echo $_GET['center_id'];?>">
-       </div>
-    </div>
+
+    <input type="hidden" name="center_id" value="<?php echo $_GET['center_id'];?>">
+
     <div class="am-form-group">
        <label for="is_contacted" class="am-u-sm-1 am-form-label">Is_Contacted</label>
        <div class="am-u-sm-11">
