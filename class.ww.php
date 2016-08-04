@@ -62,12 +62,11 @@ class WW_Module
         return $result;
     }
 
-    private static function ww_show_enquiry()
+    private static function ww_show_enquiry($center_id)
     {
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
         }else{
-            $center_id = $_GET['center_id'];
             if($center_id)
             {
                 global $wpdb;
@@ -251,7 +250,7 @@ class WW_Module
         }
 
         if ($action == 'add_enquiry') {
-            $args = array('page' => 'enq_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         if ($action == 'show_add_enquiry') {
