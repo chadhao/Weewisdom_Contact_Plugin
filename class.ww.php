@@ -44,8 +44,10 @@ class WW_Module
     {
         global $wpdb;
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"], 'center_id' => $_POST["center_id"], 'is_contacted' => $_POST["is_contacted"]);
-        $wpdb->insert('wp_ww_enquiry',
+        $result = $wpdb->insert('wp_ww_enquiry',
         array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted']));
+        echo var_dump($result);
+        echo var_dump($_POST);
         self::ww_view('list_enquiry');
     }
 
