@@ -29,8 +29,7 @@
     <div class="am-form-group">
        <label for="is_contacted" class="am-u-sm-1 am-form-label">Is_Contacted</label>
        <div class="am-u-sm-11">
-          <input type="text" name="is_contacted">
-           <!--<input type="checkbox" name="is_contacted" >-->
+           <input type="checkbox" name="is_contacted" >
        </div>
     </div>
 
