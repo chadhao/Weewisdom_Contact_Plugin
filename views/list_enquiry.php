@@ -37,7 +37,7 @@ else
 ?>
 <div>
   <br>
-  <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add_enquiry', $piece -> center_id));?>">
+  <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add_enquiry', $_GET['center_id']));?>">
     <input type="submit" value="ADD NEW ENQUIRY">
   </form>
 </div>
