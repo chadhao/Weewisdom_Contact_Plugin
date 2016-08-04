@@ -44,7 +44,7 @@ class WW_Module
     {
         global $wpdb;
         $wpdb->insert('wp_ww_enquiry',
-            array('name' => 'Pokemon', 'email' => 'pk@nintendo.com', 'phone' => '0223456789', 'center_id' => 2, 'is_contacted' => false),
+            array('name' => 'Pokemon', 'email' => 'pk@nintendo.com', 'phone' => '0223456789', 'center_id' => 24, 'is_contacted' => false),
             array('%s', '%s', '%s', '%d', '%d')
             );
     }
@@ -71,7 +71,7 @@ class WW_Module
             if($center_id)
             {
                 $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry WHERE center_id = '".$center_id."'");
-                return $result;
+                var_dump($result);
             }
         }
     }
@@ -111,7 +111,7 @@ class WW_Module
 
             if ($_GET['action'] == "list_enquiry") {
                 self::ww_show_enquiry();
-                self::ww_view('list_enquiry');
+//                self::ww_view('list_enquiry');
             }
 
 
@@ -208,7 +208,7 @@ class WW_Module
     {
         add_menu_page('WeeManager', 'WeeManager', 'edit_pages', 'cen_action', array('WW_Module', 'ww_center_manage'), 'dashicons-smiley', 2);
         add_submenu_page('cen_action', 'WeeCenter', 'WeeCenter', 'edit_pages', 'cen_action', array('WW_Module', 'ww_center_manage'));
-        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_center_manage'));
+        add_submenu_page('cen_action', 'WeeEnquiry', 'WeeEnquiry', 'edit_pages', 'enq_action', array('WW_Module', 'ww_add_enquiry'));
     }
 
 
