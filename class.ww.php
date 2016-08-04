@@ -70,7 +70,7 @@ class WW_Module
             $center_id = $_GET['center_id'];
             if($center_id)
             {
-                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry WHERE center_id = '5'");
+                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry");
                 return $result;
             }
         }
