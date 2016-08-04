@@ -9,9 +9,9 @@
        </div>
     </div>
     <div class="am-form-group">
-      <label for="address" class="am-u-sm-1 am-form-label">Address</label>
+      <label for="email" class="am-u-sm-1 am-form-label">Email</label>
       <div class="am-u-sm-11">
-          <input type="text" name="address" placeholder="add address">
+          <input type="text" name="email" placeholder="add email">
       </div>
     </div>
     <div class="am-form-group">
