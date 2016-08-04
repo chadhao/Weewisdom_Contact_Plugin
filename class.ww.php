@@ -46,8 +46,6 @@ class WW_Module
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"], 'center_id' => $_POST["center_id"], 'is_contacted' => (isset($_POST["is_contacted"])? 1 : 0));
         $result = $wpdb->insert('wp_ww_enquiry',
         array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted']));
-        echo var_dump($result);
-        echo var_dump($_POST);
         self::ww_view('list_enquiry');
     }
 

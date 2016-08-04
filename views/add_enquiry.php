@@ -21,7 +21,7 @@
        </div>
     </div>
     <div class="am-form-group">
-       <label for="center_id" class="am-u-sm-1 am-form-label">Center_ID</label>
+       <label type="hidden" for="center_id" class="am-u-sm-1 am-form-label">Center_ID</label>
        <div class="am-u-sm-11">
            <input type="hidden" name="center_id" value="<?php echo $_GET['center_id'];?>">
        </div>
