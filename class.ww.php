@@ -255,6 +255,10 @@ class WW_Module
             $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
+        if ($action == 'show_add_enquiry') {
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+
         $url = add_query_arg($args, admin_url('admin.php'));
 
         return $url;
