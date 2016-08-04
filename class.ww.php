@@ -70,10 +70,9 @@ class WW_Module
             $center_id = $_GET['center_id'];
             if($center_id)
             {
-  //              $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry");
-  //              return $result;
-
-                return $wpdb->get_results('SELECT * FROM wp_ww_center');
+                return $center_id;
+                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry WHERE center_id = '".$center_id."'");
+                return $result;
             }
         }
     }
