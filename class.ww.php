@@ -252,7 +252,7 @@ class WW_Module
         }
 
         if ($action == 'add_enquiry') {
-            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'enq_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         if ($action == 'show_add_enquiry') {
