@@ -136,16 +136,7 @@ class WW_Module
         $wpdb->insert('wp_ww_center',
            array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'address' => $input['address']),
            array('%s', '%s', '%s', '%s'));
-
-
-
-        $wpdb->insert('wp_ww_enquiry',
-           array('name' => 'Pokemon', 'email' => 'pk@nintendo.com', 'phone' => '0223456789', 'center_id' => 24, 'is_contacted' => false),
-           array('%s', '%s', '%s', '%d', '%d')
-          );
-
-
-          self::ww_view('list_center');
+           self::ww_view('list_center');
     }
 
 
