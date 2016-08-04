@@ -43,10 +43,9 @@ class WW_Module
     public static function ww_add_enquiry()
     {
         global $wpdb;
-        $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"], 'center_id' => $_GET["center_id"], 'is_contacted' => $_POST["is_contacted"]);
+        $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"], 'center_id' => $_POST["center_id"], 'is_contacted' => $_POST["is_contacted"]);
         $wpdb->insert('wp_ww_enquiry',
-        array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted'])
-      );
+        array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted']));
         self::ww_view('list_enquiry');
     }
 
@@ -252,7 +251,7 @@ class WW_Module
         }
 
         if ($action == 'add_enquiry') {
-            $args = array('page' => 'enq_action', 'action' => $action, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         if ($action == 'show_add_enquiry') {
