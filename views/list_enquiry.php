@@ -1,6 +1,6 @@
 <?php
 include 'style.php';
-$enquiry_list = WW_Module::ww_show_enquiry();
+$enquiry_list = WW_Module::ww_show_enquiry($_GET['center_id']);
 
 if (!$enquiry_list)
 {

@@ -1,6 +1,6 @@
 <?php
 include 'style.php';
-$center_list = WW_Module::ww_get_center($_GET('center_id'));
+$center_list = WW_Module::ww_get_center();
 
 if (!$center_list)
 {
