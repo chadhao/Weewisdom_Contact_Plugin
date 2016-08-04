@@ -2,6 +2,8 @@
 include 'style.php';
 $enquiry_list = WW_Module::ww_show_enquiry();
 
+echo '<h1>'.$enquiry_list.'</h1>';
+
 if (!$enquiry_list)
 {
   echo '<div class="error"><p>No recorded enquiry identified!</p></div>';

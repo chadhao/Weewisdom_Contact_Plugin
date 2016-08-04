@@ -64,6 +64,7 @@ class WW_Module
 
     private static function ww_show_enquiry()
     {
+        return "123";
         if (!isset($_GET['center_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
         }else{
@@ -110,7 +111,6 @@ class WW_Module
 
 
             if ($_GET['action'] == "list_enquiry") {
-                self::ww_show_enquiry();
                 self::ww_view('list_enquiry');
             }
 
@@ -201,8 +201,6 @@ class WW_Module
         }
         self::ww_view('list_center');
     }
-
-
     //initialize admin menu
     public static function ww_load_menu()
     {
