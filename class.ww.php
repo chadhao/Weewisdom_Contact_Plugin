@@ -56,12 +56,6 @@ class WW_Module
 
     public static function ww_update_enquiry()
     {
-        var_dump($_GET['center_id']);
-        var_dump($_POST['name']);
-        var_dump($_POST['email']);
-        var_dump($_POST['phone']);
-        var_dump($_POST['is_contacted']);
-        var_dump($_GET['enq_id']);
         if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone']) ||!isset($_GET['enq_id']))
         {
             self::ww_display_message('error', 'Update Failed!');
