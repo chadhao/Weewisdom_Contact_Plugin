@@ -30,14 +30,45 @@ class WW_Module
 
 
     //enquiry action fucntions
+    public static function ww_show_update_enquiry()
+    {
+        if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
+            self::ww_display_message('error', 'Illegal request！');
+        }
+        else
+        {
+            $enq_id = $_GET['enq_id'];
+            $center_id = $_GET['center_id'];
+            if($enq_id)
+            {
+                global $wpdb;
+                $result = $wpdb->get_row("SELECT * FROM wp_ww_enquiry WHERE enq_id = '".$enq_id."'");
+                $_SESSION['enq_id'] = $enq_id;
+                $_SESSION['name'] = $result->name;
+                $_SESSION['email'] = $result->email;
+                $_SESSION['phone'] = $result->phone;
+                $_SESSION['center_id'] = $center_id;
+                $_SESSION['is_contacted'] = $result->is_contacted;
+                self::ww_view('edit_enquiry');
+            }
+        }
+    }
+
     public static function ww_update_enquiry()
     {
-        global $wpdb;
-        $wpdb->update('wp_ww_enquiry',
-            array('name' => 'Taku', 'phone' => '0112233445', 'center_id' => 1, 'is_contacted' => true),
-            array('enq_id' => 1),
-            array('%s', '%s', '%d', '%d')
-            );
+        if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone']) ||!isset($_GET['enq_id']))
+        {
+            self::ww_display_message('error', 'Update Failed!');
+        }
+
+        else
+        {
+            global $wpdb;
+            $wpdb->update('wp_ww_enquiry', array('name' => $_POST['name'], 'email' => $_POST['email'], 'phone' => $_POST['phone'], 'center_id' => $_GET['center_id'], 'is_contacted' => (isset($_POST["is_contacted"])? 1 : 0)),
+            array('enq_id' => $_GET['enq_id']));
+            self::ww_display_message('update', 'Update Succeed!');
+        }
+        self::ww_view('list_enquiry');
     }
 
     public static function ww_add_enquiry()
@@ -51,8 +82,19 @@ class WW_Module
 
     public static function ww_del_enquiry()
     {
-        global $wpdb;
-        $wpdb->delete('wp_ww_enquiry', array('enq_id' => 1));
+        if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
+            self::ww_display_message('error', 'Illegal request！');
+        } else {
+            $enq_id = $_GET['enq_id'];
+            if($enq_id){
+                global $wpdb;
+                $wpdb->delete('wp_ww_enquiry', array('enq_id' => $enq_id));
+                self::ww_display_message('updated', 'Deletion Succeed!');
+            }else {
+                self::ww_display_message('error', 'Deletion Failed!');
+            }
+        }
+        self::ww_view('list_enquiry');
     }
 
     public static function ww_get_enquiry()
@@ -118,6 +160,17 @@ class WW_Module
             if ($_GET['action'] == "add_enquiry") {
                 self::ww_add_enquiry();
             }
+
+            if ($_GET['action'] == "show_update_enquiry") {
+                self::ww_show_update_enquiry();
+            }
+            if ($_GET['action'] == "del_enquiry") {
+                self::ww_del_enquiry();
+            }
+            if ($_GET['action'] == "update_enquiry") {
+                self::ww_update_enquiry();
+            }
+
 
         }
         else{
@@ -214,7 +267,7 @@ class WW_Module
     }
 
 
-    public static function ww_manage_get_url($action, $center_id = 0)
+    public static function ww_manage_get_url($action, $center_id = 0, $enq_id = 0)
     {
         //default menu page
         if (!$action)
@@ -255,6 +308,18 @@ class WW_Module
 
         if ($action == 'show_add_enquiry') {
             $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+
+        if ($action == 'show_update_enquiry') {
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+
+        if ($action == 'del_enquiry') {
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+        }
+
+        if ($action == 'update_enquiry') {
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         $url = add_query_arg($args, admin_url('admin.php'));
