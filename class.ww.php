@@ -48,7 +48,7 @@ class WW_Module
         array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted']));
         self::ww_view('list_enquiry');
     }
-/*
+
     public static function ww_del_enquiry()
     {
         if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
@@ -65,7 +65,7 @@ class WW_Module
         }
         self::ww_view('list_enquiry');
     }
-*/
+
     public static function ww_get_enquiry()
     {
         global $wpdb;
@@ -129,14 +129,14 @@ class WW_Module
             if ($_GET['action'] == "add_enquiry") {
                 self::ww_add_enquiry();
             }
-/*
+
             if ($_GET['action'] == "show_update_enquiry") {
                 self::ww_show_update_enquiry();
             }
             if ($_GET['action'] == "del_enquiry") {
                 self::ww_del_enquiry();
             }
-*/
+
         }
         else{
             self::ww_view('list_center');
@@ -232,7 +232,7 @@ class WW_Module
     }
 
 
-    public static function ww_manage_get_url($action, $center_id = 0)
+    public static function ww_manage_get_url($action, $center_id = 0, $enq_id = 0)
     {
         //default menu page
         if (!$action)
@@ -275,14 +275,14 @@ class WW_Module
             $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
-/*        if ($action == 'show_update_enquiry') {
+        if ($action == 'show_update_enquiry') {
             $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         if ($action == 'del_enquiry') {
             $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
-*/
+
         $url = add_query_arg($args, admin_url('admin.php'));
 
         return $url;
