@@ -25,7 +25,7 @@
     <div class="am-form-group">
        <label for="is_contacted" class="am-u-sm-1 am-form-label">Is_Contacted</label>
        <div class="am-u-sm-11">
-           <input type="checkbox" name="is_contacted" value="<?php echo ($_SESSION['is_contacted'] == 1 ? 'checked' : '');?>">
+           <input type="checkbox" name="is_contacted" checked="<?php echo ($_SESSION['is_contacted'] == 1 ? 'checked' : '');?>">
        </div>
     </div>
 
