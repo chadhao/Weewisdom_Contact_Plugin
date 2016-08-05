@@ -30,7 +30,7 @@ class WW_Module
 
 
     //enquiry action fucntions
-    public static function ww_show_update_enquiry()()
+    public static function ww_show_update_enquiry()
     {
         if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
             self::ww_display_message('error', 'Illegal request！');
