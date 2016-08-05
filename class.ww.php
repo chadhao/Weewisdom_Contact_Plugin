@@ -297,7 +297,7 @@ class WW_Module
         $ww_table_name_center = $wpdb->prefix.'ww_center';
         $ww_table_name_enquiry = $wpdb->prefix.'ww_enquiry';
         $ww_charset_collate = $wpdb->get_charset_collate();
-center
+
         $ww_center_sql = "CREATE TABLE $ww_table_name_center (
         center_id int(5) unsigned NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL,
