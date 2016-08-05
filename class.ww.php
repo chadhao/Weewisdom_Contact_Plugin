@@ -232,7 +232,7 @@ class WW_Module
     }
 
 
-    public static function ww_manage_get_url($action, $center_id = 0, $enq_id = 0)
+    public static function ww_manage_get_url($action, $center_id = 0)
     {
         //default menu page
         if (!$action)
