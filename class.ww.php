@@ -275,11 +275,11 @@ class WW_Module
         }
 
         if ($action == 'show_update_enquiry') {
-            $args = array('page' => 'enq_action', 'action' => $action, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         if ($action == 'del_enquiry') {
-            $args = array('page' => 'enq_action', 'action' => $action, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, 'enq_id' => $enq_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         $url = add_query_arg($args, admin_url('admin.php'));
