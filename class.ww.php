@@ -71,7 +71,8 @@ class WW_Module
         else
         {
             global $wpdb;
-            $wpdb->update('wp_ww_enquiry', array('enq_id' => $_GET['enq_id'], 'name' => $_POST['name'], 'email' => $_POST['email'], 'phone' => $_POST['phone'], 'center_id' => $_GET['center_id'], 'is_contacted' => $_POST['is_contacted']));
+            $wpdb->update('wp_ww_enquiry', array('name' => $_POST['name'], 'email' => $_POST['email'], 'phone' => $_POST['phone'], 'center_id' => $_GET['center_id'], 'is_contacted' => $_POST['is_contacted']), 
+            array('enq_id' => $_GET['enq_id']));
             self::ww_display_message('update', 'Update Succeed!');
         }
         self::ww_view('list_enquiry');
