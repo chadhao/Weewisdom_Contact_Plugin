@@ -48,7 +48,7 @@ class WW_Module
         array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => $input['is_contacted']));
         self::ww_view('list_enquiry');
     }
-
+/*
     public static function ww_del_enquiry()
     {
         if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
@@ -65,7 +65,7 @@ class WW_Module
         }
         self::ww_view('list_enquiry');
     }
-
+*/
     public static function ww_get_enquiry()
     {
         global $wpdb;
@@ -129,13 +129,14 @@ class WW_Module
             if ($_GET['action'] == "add_enquiry") {
                 self::ww_add_enquiry();
             }
+/*
             if ($_GET['action'] == "show_update_enquiry") {
                 self::ww_show_update_enquiry();
             }
             if ($_GET['action'] == "del_enquiry") {
                 self::ww_del_enquiry();
             }
-
+*/
         }
         else{
             self::ww_view('list_center');
