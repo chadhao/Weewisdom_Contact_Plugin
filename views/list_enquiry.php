@@ -28,7 +28,7 @@ else
             '<td>'.$piece->phone.'</td>'.
             '<td>'.$piece->center_id.'</td>'.
             '<td>'.$piece->is_contacted.'</td>'.
-            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update_enquiry', $piece -> center_id, $piece -> enq_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_enquiry', $piece -> center_id, $piece -> enq_id)).'>DELETE</a></td>'.
+//            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update_enquiry', $piece -> center_id, $piece -> enq_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_enquiry', $piece -> center_id, $piece -> enq_id)).'>DELETE</a></td>'.
             '</tr>';
       }
     echo  '</table>';
