@@ -62,8 +62,7 @@ class WW_Module
         var_dump($_POST['phone']);
         var_dump($_POST['is_contacted']);
         var_dump($_GET['enq_id']);
-        if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone'])
-            ||!isset($_POST['is_contacted']) ||!isset($_GET['enq_id']))
+        if (!isset($_GET['center_id']) || !isset($_POST['name']) ||!isset($_POST['email'])||!isset($_POST['phone']) ||!isset($_GET['enq_id']))
         {
             self::ww_display_message('error', 'Update Failed!');
         }
@@ -71,7 +70,7 @@ class WW_Module
         else
         {
             global $wpdb;
-            $wpdb->update('wp_ww_enquiry', array('name' => $_POST['name'], 'email' => $_POST['email'], 'phone' => $_POST['phone'], 'center_id' => $_GET['center_id'], 'is_contacted' => (isset($_POST["is_contacted"])? 1 : 0)), 
+            $wpdb->update('wp_ww_enquiry', array('name' => $_POST['name'], 'email' => $_POST['email'], 'phone' => $_POST['phone'], 'center_id' => $_GET['center_id'], 'is_contacted' => (isset($_POST["is_contacted"])? 1 : 0)),
             array('enq_id' => $_GET['enq_id']));
             self::ww_display_message('update', 'Update Succeed!');
         }
