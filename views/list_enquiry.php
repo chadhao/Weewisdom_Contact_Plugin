@@ -16,7 +16,7 @@ else
             '<td>EMAIL</td>'.
             '<td>PHONE</td>'.
             '<td>CENTER_ID</td>'.
-            '<td>IS_CONTACTED</td>'.
+            '<td>CONTACTED</td>'.
             "</tr>\n";
       $ID = 1;
       foreach ($enquiry_list as $piece)
@@ -27,7 +27,7 @@ else
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
             '<td>'.$piece->center_id.'</td>'.
-            '<td>'.$piece->is_contacted.'</td>'.
+            '<td>'.($piece->is_contacted == 0 ? 'No' : 'Yes').'</td>'.
             '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update_enquiry', $piece -> center_id, $piece -> enq_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_enquiry', $piece -> center_id, $piece -> enq_id)).'>DELETE</a></td>'.
             '</tr>';
       }
