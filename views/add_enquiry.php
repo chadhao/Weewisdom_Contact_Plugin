@@ -24,7 +24,7 @@
     <input type="hidden" name="center_id" value="<?php echo $_GET['center_id'];?>">
 
     <div class="am-form-group">
-       <label for="is_contacted" class="am-u-sm-1 am-form-label">Is_Contacted</label>
+       <label for="is_contacted" class="am-u-sm-1 am-form-label">Contacted</label>
        <div class="am-u-sm-11">
            <input type="checkbox" name="is_contacted">
        </div>
