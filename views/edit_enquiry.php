@@ -28,7 +28,7 @@
            <input type="checkbox" name="is_contacted" checked="<?php echo ($_SESSION['is_contacted'] == 1 ? 'checked' : '');?>">
        </div>
     </div>
-
+    <p3><?php echo ($_SESSION['is_contacted']);?></p3>
     <div class="am-form-group">
        <div class="am-u-sm-11 am-u-sm-offset-1">
            <button type="submit" class="am-btn am-btn-primary am-radius">Submit</button>
