@@ -28,7 +28,6 @@ class WW_Module
         }
     }
 
-
     //enquiry action fucntions
     public static function ww_show_update_enquiry()
     {
@@ -102,6 +101,11 @@ class WW_Module
         global $wpdb;
         $result = $wpdb->get_results('SELECT * FROM wp_ww_enquiry;');
         return $result;
+    }
+
+    public static function ww_list_all_enq()
+    {
+        self::ww_view('list_all_enquiries');
     }
 
     private static function ww_show_enquiry($center_id)
