@@ -1,10 +1,10 @@
 <?php
 include 'style.php';
-$enquiry_list = WW_Module::ww_show_enquiry($_GET['center_id']);
+$enq_list = WW_Module::ww_get_enquiry();
 
-if (!$enquiry_list)
+if (!$enq_list)
 {
-  echo '<div class="error"><p>No recorded enquiry identified!</p></div>';
+  echo '<div class="error"><p>No recorded center identified!</p></div>';
 }
 else
 {
@@ -19,25 +19,18 @@ else
             '<td>CONTACTED</td>'.
             "</tr>\n";
       $ID = 1;
-      foreach ($enquiry_list as $piece)
+      foreach ($enq_list as $piece)
       {
-             echo '<tr>'.
+            echo '<tr>'.
             '<td>'.$ID++.'</td>'.
             '<td>'.$piece->name.'</a></td>'.
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
             '<td>'.$piece->center_id.'</td>'.
             '<td>'.($piece->is_contacted == 0 ? 'No' : 'Yes').'</td>'.
-            '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update_enquiry', $piece -> center_id, $piece -> enq_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_enquiry', $piece -> center_id, $piece -> enq_id)).'>DELETE</a></td>'.
             '</tr>';
       }
     echo  '</table>';
   echo '</div>';
 }
 ?>
-<div>
-  <br>
-  <form method="post" action="<?php echo esc_url(WW_Module::ww_manage_get_url('show_add_enquiry', $_GET['center_id']));?>">
-    <input type="submit" value="ADD NEW ENQUIRY">
-  </form>
-</div>
