@@ -303,7 +303,7 @@ class WW_Module
 
 
         if ($action == 'list_enquiry') {
-            $args = array('page' => 'enq_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
+            $args = array('page' => 'cen_action', 'action' => $action, 'center_id' => $center_id, '_wpnonce' => wp_create_nonce(self::NONCE));
         }
 
         if ($action == 'add_enquiry') {
