@@ -4,7 +4,7 @@ $enq_list = WW_Module::ww_get_enquiry();
 
 if (!$enq_list)
 {
-  echo '<div class="error"><p>No recorded center identified!</p></div>';
+  echo '<div class="error"><p>No recorded enquiry identified!</p></div>';
 }
 else
 {
