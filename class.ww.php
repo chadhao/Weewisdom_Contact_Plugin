@@ -34,15 +34,16 @@ class WW_Module
     //enquiry action fucntions
     public static function ww_add_enquiry_front()
     {
-        echo '<script>alert("test")</script>';
-        var_dump($_POST);
+        
+        //var_dump($_POST);
         global $wpdb;
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"]);
         $message = "Enquiry from: ".$input["name"]."\n"
                     ."Phone: ".$input["phone"]."\n"
                     ."Email: ".$input["email"]."\n"
                     ."Message: "."\n".$_POST["enquiry"];
-        wp_mail("arieslee1@Hotmail.com", "WeeWisdom", $message);
+        $check = wp_mail("arieslee1@Hotmail.com", "WeeWisdom", $message);
+        echo '<script>alert'.$check.'</script>';
         $cemail = $_POST["cemail"];
         $center_id = self::ww_get_center_id($cemail);
         $result = $wpdb->insert('wp_ww_enquiry',
