@@ -13,6 +13,8 @@ class WW_Module
     public static function ww_init()
     {
         add_action('admin_menu', array('WW_Module', 'ww_load_menu'));
+        add_action('admin_post_wee_enquiry_form', array('WW_Module', 'ww_add_enquiry_front'));
+        add_action('admin_post_nopriv_wee_enquiry_form', array('WW_Module', 'ww_add_enquiry_front'));
     }
 
     public static function ww_deactivation()
@@ -28,7 +30,27 @@ class WW_Module
         }
     }
 
+
     //enquiry action fucntions
+    public static function ww_add_enquiry_front()
+    {
+        global $wpdb;
+        $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"]);
+        $cemail = $_POST["cemail"];
+        $center_id = self::ww_get_center_id($cemail);
+        $result = $wpdb->insert('wp_ww_enquiry',
+        array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $input['center_id'], 'is_contacted' => 0));
+        //self::ww_view('list_enquiry');
+    }
+
+    private static function ww_get_center_id($email)
+    {
+        global $wpdb;
+        $id = $wpdb->get_var("SELECT center_id FROM wp_ww_center WHERE email = '".$email."'");
+        return $id;
+    }
+
+    
     public static function ww_show_update_enquiry()
     {
         if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
