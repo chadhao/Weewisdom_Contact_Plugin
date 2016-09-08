@@ -35,6 +35,7 @@ class WW_Module
     public static function ww_add_enquiry_front()
     {
         echo '<script>alert("test")</script>';
+        var_dump($_POST);
         global $wpdb;
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"]);
         $cemail = $_POST["cemail"];
