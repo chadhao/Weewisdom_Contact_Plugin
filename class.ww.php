@@ -38,12 +38,19 @@ class WW_Module
         var_dump($_POST);
         global $wpdb;
         $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"]);
+        $message = "Enquiry from: ".$input["name"]."\n"
+                    ."Phone: ".$input["phone"]."\n"
+                    ."Email: ".$input["email"]."\n"
+                    ."Message: "."\n".$_POST["enquiry"];
+        wp_mail("arieslee1@Hotmail.com", "WeeWisdom", $message);
         $cemail = $_POST["cemail"];
         $center_id = self::ww_get_center_id($cemail);
         $result = $wpdb->insert('wp_ww_enquiry',
         array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $center_id, 'is_contacted' => 0));
         //self::ww_view('list_enquiry');
     }
+
+
 
     private static function ww_get_center_id($email)
     {
