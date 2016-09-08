@@ -43,12 +43,25 @@ class WW_Module
                     ."Email: ".$input["email"]."\n"
                     ."Message: "."\n".$_POST["enquiry"];
         $check = wp_mail("arieslee1@Hotmail.com", "WeeWisdom", $message);
-        echo '<script>alert'.$check.'</script>';
+        //echo '<script>alert'.$check.'</script>';
         //var_dump($message);
         $cemail = $_POST["cemail"];
         $center_id = self::ww_get_center_id($cemail);
         $result = $wpdb->insert('wp_ww_enquiry',
         array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $center_id, 'is_contacted' => 0));
+        if($result && $check)
+        {
+            //echo "success";
+            //wp_redirect( $url );
+            echo '<script>alert("success")</script>';          
+        }
+        else
+        {
+            echo '<script>alert("failed")</script>'; 
+        }
+        
+        echo '<script>window.history.go(-1)</script>';
+
         //self::ww_view('list_enquiry');
     }
 
