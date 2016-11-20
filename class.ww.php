@@ -37,34 +37,58 @@ class WW_Module
         
         //var_dump($_POST);
         global $wpdb;
-        $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"]);
-        $message = "Enquiry from: ".$input["name"]."\n"
-                    ."Phone: ".$input["phone"]."\n"
-                    ."Email: ".$input["email"]."\n"
-                    ."Message: "."\n".$_POST["enquiry"];
-        $check = wp_mail("arieslee1@Hotmail.com", "WeeWisdom", $message);
-        //echo '<script>alert'.$check.'</script>';
-        //var_dump($message);
-        $cemail = $_POST["cemail"];
-        $center_id = self::ww_get_center_id($cemail);
-        $result = $wpdb->insert('wp_ww_enquiry',
-        array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $center_id, 'is_contacted' => 0));
-        if($result && $check)
+        if(empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["phone"]) || empty($_POST["enquiry"]))
         {
-            //echo "success";
-            //wp_redirect( $url );
-            echo '<script>alert("success")</script>';          
+			echo '<script>alert("Please fill all the text fields!")</script>';
+			//self::ww_clear_session();
+            echo '<script>window.history.go(-1)</script>';
+			//return;     	
+        }
+        else if (!preg_match("/^[a-zA-Z ]*$/",$_POST["name"])) {
+            echo '<script>alert("Only letters and white space allowed in filling names!")</script>';
+            echo '<script>window.history.go(-1)</script>';
+            //return;
+        }
+        else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            echo '<script>alert("Invalid email format!")</script>';
+            //echo '<script>window.history.go(-1)</script>';
+            //return;
+        }else if (!preg_match("/^[0-9 ]*$/",$_POST["phone"])) {
+            echo '<script>alert("Invalid phone format!")</script>';
+            echo '<script>window.history.go(-1)</script>';
+            //return;
         }
         else
         {
-            echo '<script>alert("failed")</script>'; 
-        }
+
+            $input = array('name' => $_POST["name"], 'email' => $_POST["email"], 'phone' => $_POST["phone"], 'enquiry' => $_POST["enquiry"]);
+            $message = "Enquiry from: ".$input["name"]."\n"
+            ."Phone: ".$input["phone"]."\n"
+            ."Email: ".$input["email"]."\n"
+            ."Message: "."\n".$input["enquiry"];
+            $cemail = $_POST["cemail"];
+            $center_id = self::ww_get_center_id($cemail);
+            $check = wp_mail($cemail, "Enquiry from ".$input["name"], $message);
+		    //echo '<script>alert'.$cemail.'</script>';
+            $result = $wpdb->insert('wp_ww_enquiry',
+                array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $center_id, 'is_contacted' => 0));
+            if($result && $check)
+            {
+                echo '<script>alert("Your enquiry has been sent successfully!")</script>';          
+            }
+            else
+            {
+                echo '<script>alert("Oops! our enquiry service is not aviable now, please try it later")</script>';
+                //self::ww_clear_session();
+                echo '<script>window.history.go(-1)</script>';
+                return;
+             }
         
-        echo '<script>window.history.go(-1)</script>';
+            echo '<script>window.history.go(-1)</script>';
+        }
 
         //self::ww_view('list_enquiry');
     }
-
 
 
     private static function ww_get_center_id($email)
