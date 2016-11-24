@@ -34,7 +34,7 @@ class WW_Module
     //enquiry action fucntions
     public static function ww_add_enquiry_front()
     {
-        
+
         //var_dump($_POST);
         global $wpdb;
         if(empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["phone"]) || empty($_POST["enquiry"]))
@@ -42,7 +42,7 @@ class WW_Module
 			echo '<script>alert("Please fill all the text fields!")</script>';
 			//self::ww_clear_session();
             echo '<script>window.history.go(-1)</script>';
-			//return;     	
+			//return;
         }
         else if (!preg_match("/^[a-zA-Z ]*$/",$_POST["name"])) {
             echo '<script>alert("Only letters and white space allowed in filling names!")</script>';
@@ -74,7 +74,7 @@ class WW_Module
                 array('name' => $input['name'], 'email' => $input['email'], 'phone' => $input['phone'], 'center_id' => $center_id, 'is_contacted' => 0));
             if($result && $check)
             {
-                echo '<script>alert("Your enquiry has been sent successfully!")</script>';          
+                echo '<script>alert("Your enquiry has been sent successfully!")</script>';
             }
             else
             {
@@ -83,7 +83,7 @@ class WW_Module
                 echo '<script>window.history.go(-1)</script>';
                 return;
              }
-        
+
             echo '<script>window.history.go(-1)</script>';
         }
 
@@ -98,7 +98,7 @@ class WW_Module
         return $id;
     }
 
-    
+
     public static function ww_show_update_enquiry()
     {
         if (!isset($_GET['enq_id']) || !wp_verify_nonce($_GET['_wpnonce'], self::NONCE)) {
@@ -169,7 +169,7 @@ class WW_Module
     public static function ww_get_enquiry()
     {
         global $wpdb;
-        $result = $wpdb->get_results('SELECT * FROM wp_ww_enquiry;');
+        $result = $wpdb->get_results('SELECT * FROM wp_ww_enquiry we JOIN (SELECT name AS centerName, center_id FROM wp_ww_center) wc ON wc.center_id = we.center_id;');
         return $result;
     }
 
@@ -186,7 +186,7 @@ class WW_Module
             if($center_id)
             {
                 global $wpdb;
-                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry WHERE center_id = '".$center_id."'");
+                $result = $wpdb->get_results("SELECT * FROM wp_ww_enquiry we JOIN (SELECT name AS centerName, center_id FROM wp_ww_center) wc ON wc.center_id = we.center_id WHERE we.center_id = '".$center_id."'");
                 return $result;
             }
         }

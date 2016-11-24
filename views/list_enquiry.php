@@ -15,7 +15,7 @@ else
             '<td>NAME</td>'.
             '<td>EMAIL</td>'.
             '<td>PHONE</td>'.
-            '<td>CENTER_ID</td>'.
+            '<td>CENTER</td>'.
             '<td>CONTACTED</td>'.
             "</tr>\n";
       $ID = 1;
@@ -26,7 +26,7 @@ else
             '<td>'.$piece->name.'</a></td>'.
             '<td>'.$piece->email.'</td>'.
             '<td>'.$piece->phone.'</td>'.
-            '<td>'.$piece->center_id.'</td>'.
+            '<td>'.$piece->centerName.'</td>'.
             '<td>'.($piece->is_contacted == 0 ? 'No' : 'Yes').'</td>'.
             '<td><a href='.esc_url(WW_Module::ww_manage_get_url('show_update_enquiry', $piece -> center_id, $piece -> enq_id)).'>EDIT</a> | <a href='.esc_url(WW_Module::ww_manage_get_url('del_enquiry', $piece -> center_id, $piece -> enq_id)).'>DELETE</a></td>'.
             '</tr>';
